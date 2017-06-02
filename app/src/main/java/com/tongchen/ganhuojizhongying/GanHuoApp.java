@@ -1,5 +1,8 @@
 package com.tongchen.ganhuojizhongying;
 
+import com.tongchen.ganhuojizhongying.attr.TabLayoutIndicatorAttr;
+
+import solid.ren.skinlibrary.SkinConfig;
 import solid.ren.skinlibrary.base.SkinBaseApplication;
 
 /**
@@ -13,5 +16,7 @@ public class GanHuoApp extends SkinBaseApplication {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        SkinConfig.addSupportAttr("tabLayoutIndicator", new TabLayoutIndicatorAttr());
     }
 }

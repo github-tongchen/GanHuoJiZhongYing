@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">SkinPackage</string>
+    <string name="app_name">干货集中营APP</string>
+    
+    <string name="tab_0">今日推荐</string>
+    <string name="tab_1">Android</string>
+    <string name="tab_2">iOS</string>
 </resources>
