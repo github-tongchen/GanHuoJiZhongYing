@@ -1,0 +1,42 @@
+[
+    {
+        "merged": "D:\\WorkSpace\\AndroidStudio\\GitHub\\GanHuoJiZhongYing\\skinlibrary\\build\\intermediates\\res\\merged\\release\\anim\\abc_popup_enter.xml",
+        "source": "C:\\Users\\vince\\.android\\build-cache\\f03f50fa8c7f3ac5ea41b7a7a4a6332bb4019296\\output\\res\\anim\\abc_popup_enter.xml"
+    },
+    {
+        "merged": "D:\\WorkSpace\\AndroidStudio\\GitHub\\GanHuoJiZhongYing\\skinlibrary\\build\\intermediates\\res\\merged\\release\\anim\\abc_fade_out.xml",
+        "source": "C:\\Users\\vince\\.android\\build-cache\\f03f50fa8c7f3ac5ea41b7a7a4a6332bb4019296\\output\\res\\anim\\abc_fade_out.xml"
+    },
+    {
+        "merged": "D:\\WorkSpace\\AndroidStudio\\GitHub\\GanHuoJiZhongYing\\skinlibrary\\build\\intermediates\\res\\merged\\release\\anim\\abc_fade_in.xml",
+        "source": "C:\\Users\\vince\\.android\\build-cache\\f03f50fa8c7f3ac5ea41b7a7a4a6332bb4019296\\output\\res\\anim\\abc_fade_in.xml"
+    },
+    {
+        "merged": "D:\\WorkSpace\\AndroidStudio\\GitHub\\GanHuoJiZhongYing\\skinlibrary\\build\\intermediates\\res\\merged\\release\\anim\\abc_popup_exit.xml",
+        "source": "C:\\Users\\vince\\.android\\build-cache\\f03f50fa8c7f3ac5ea41b7a7a4a6332bb4019296\\output\\res\\anim\\abc_popup_exit.xml"
+    },
+    {
+        "merged": "D:\\WorkSpace\\AndroidStudio\\GitHub\\GanHuoJiZhongYing\\skinlibrary\\build\\intermediates\\res\\merged\\release\\anim\\abc_slide_out_bottom.xml",
+        "source": "C:\\Users\\vince\\.android\\build-cache\\f03f50fa8c7f3ac5ea41b7a7a4a6332bb4019296\\output\\res\\anim\\abc_slide_out_bottom.xml"
+    },
+    {
+        "merged": "D:\\WorkSpace\\AndroidStudio\\GitHub\\GanHuoJiZhongYing\\skinlibrary\\build\\intermediates\\res\\merged\\release\\anim\\abc_slide_out_top.xml",
+        "source": "C:\\Users\\vince\\.android\\build-cache\\f03f50fa8c7f3ac5ea41b7a7a4a6332bb4019296\\output\\res\\anim\\abc_slide_out_top.xml"
+    },
+    {
+        "merged": "D:\\WorkSpace\\AndroidStudio\\GitHub\\GanHuoJiZhongYing\\skinlibrary\\build\\intermediates\\res\\merged\\release\\anim\\abc_shrink_fade_out_from_bottom.xml",
+        "source": "C:\\Users\\vince\\.android\\build-cache\\f03f50fa8c7f3ac5ea41b7a7a4a6332bb4019296\\output\\res\\anim\\abc_shrink_fade_out_from_bottom.xml"
+    },
+    {
+        "merged": "D:\\WorkSpace\\AndroidStudio\\GitHub\\GanHuoJiZhongYing\\skinlibrary\\build\\intermediates\\res\\merged\\release\\anim\\abc_slide_in_top.xml",
+        "source": "C:\\Users\\vince\\.android\\build-cache\\f03f50fa8c7f3ac5ea41b7a7a4a6332bb4019296\\output\\res\\anim\\abc_slide_in_top.xml"
+    },
+    {
+        "merged": "D:\\WorkSpace\\AndroidStudio\\GitHub\\GanHuoJiZhongYing\\skinlibrary\\build\\intermediates\\res\\merged\\release\\anim\\abc_slide_in_bottom.xml",
+        "source": "C:\\Users\\vince\\.android\\build-cache\\f03f50fa8c7f3ac5ea41b7a7a4a6332bb4019296\\output\\res\\anim\\abc_slide_in_bottom.xml"
+    },
+    {
+        "merged": "D:\\WorkSpace\\AndroidStudio\\GitHub\\GanHuoJiZhongYing\\skinlibrary\\build\\intermediates\\res\\merged\\release\\anim\\abc_grow_fade_in_from_bottom.xml",
+        "source": "C:\\Users\\vince\\.android\\build-cache\\f03f50fa8c7f3ac5ea41b7a7a4a6332bb4019296\\output\\res\\anim\\abc_grow_fade_in_from_bottom.xml"
+    }
+]
