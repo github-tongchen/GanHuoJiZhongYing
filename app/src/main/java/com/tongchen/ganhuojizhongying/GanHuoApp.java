@@ -13,10 +13,17 @@ import solid.ren.skinlibrary.base.SkinBaseApplication;
 
 public class GanHuoApp extends SkinBaseApplication {
 
+    private static GanHuoApp instance = null;
+
     @Override
     public void onCreate() {
         super.onCreate();
+        instance = this;
 
         SkinConfig.addSupportAttr("tabLayoutIndicator", new TabLayoutIndicatorAttr());
+    }
+
+    public static GanHuoApp getInstance() {
+        return instance;
     }
 }
