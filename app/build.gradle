@@ -32,5 +32,5 @@ dependencies {
     compile 'com.android.support:support-v4:25.3.1'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.0.0-RC0'
     //  加入无缝换肤
-    compile project(':skinlibrary')
+    compile 'com.solid.skin:skinlibrary:1.4.5'
 }

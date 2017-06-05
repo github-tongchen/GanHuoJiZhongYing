@@ -45,7 +45,7 @@ public class MainActivity extends SkinBaseActivity {
 
         tabLyt = (TabLayout) findViewById(R.id.tabLyt_column);
         //  使TabLayout的指示器支持换肤
-        //dynamicAddView(tabLyt, "tabLayoutIndicator", R.color.colorPrimaryDark);
+        dynamicAddView(tabLyt, "tabLayoutIndicator", R.color.colorPrimaryDark);
 
        /* tabLyt.setOnClickListener(new View.OnClickListener() {
             @Override
