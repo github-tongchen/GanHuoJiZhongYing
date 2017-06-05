@@ -20,6 +20,7 @@ public class GanHuoApp extends SkinBaseApplication {
         super.onCreate();
         instance = this;
 
+        //  使TabLayout的指示器支持换肤
         SkinConfig.addSupportAttr("tabLayoutIndicator", new TabLayoutIndicatorAttr());
     }
 

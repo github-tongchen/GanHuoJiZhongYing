@@ -1,6 +1,9 @@
 package com.tongchen.ganhuojizhongying.util;
 
-import java.util.List;
+import android.text.TextUtils;
+
+import com.google.gson.Gson;
+import com.tongchen.ganhuojizhongying.gson.GanHuo;
 
 /**
  * Created by TongChen on 2017/6/5.
@@ -10,8 +13,10 @@ import java.util.List;
 
 public class UtilityUtil {
 
-    public static List<String> handleClassifyResponse() {
-
+    public static GanHuo handleClassifyResponse(String response) {
+        if (!TextUtils.isEmpty(response)) {
+            return new Gson().fromJson(response, GanHuo.class);
+        }
         return null;
     }
 
