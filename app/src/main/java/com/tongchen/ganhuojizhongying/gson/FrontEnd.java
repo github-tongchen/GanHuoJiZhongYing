@@ -5,22 +5,15 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class GanHuo {
+/**
+ * 前端版块
+ */
+public class FrontEnd {
 
-    @SerializedName("category")
-    private List<String> mCategory;
     @SerializedName("error")
     private Boolean mError;
     @SerializedName("results")
-    private Results mResults;
-
-    public List<String> getCategory() {
-        return mCategory;
-    }
-
-    public void setCategory(List<String> category) {
-        mCategory = category;
-    }
+    private List<Result> mResults;
 
     public Boolean getError() {
         return mError;
@@ -30,11 +23,11 @@ public class GanHuo {
         mError = error;
     }
 
-    public Results getResults() {
+    public List<Result> getResults() {
         return mResults;
     }
 
-    public void setResults(Results results) {
+    public void setResults(List<Result> results) {
         mResults = results;
     }
 

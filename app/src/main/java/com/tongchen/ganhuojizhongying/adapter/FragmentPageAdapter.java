@@ -5,8 +5,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.tongchen.ganhuojizhongying.fragment.GanHuoFragment;
-
 import java.util.List;
 
 /**
@@ -18,18 +16,18 @@ import java.util.List;
 public class FragmentPageAdapter extends FragmentPagerAdapter {
 
     private Context mContext;
-    private List<GanHuoFragment> mFragments;
+    private List<Fragment> mFragments;
     private List<String> mTitles;
 
     public FragmentPageAdapter(FragmentManager fm) {
         super(fm);
     }
 
-    public FragmentPageAdapter(FragmentManager fm, Context context, List<GanHuoFragment> fragments, List<String> titles) {
+    public FragmentPageAdapter(FragmentManager fm, Context context, List<Fragment> fragments,List<String> titles) {
         super(fm);
         mContext = context;
         mFragments = fragments;
-        mTitles = titles;
+        mTitles=titles;
     }
 
     @Override

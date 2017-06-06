@@ -24,18 +24,18 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    testCompile 'junit:junit:4.12'
     //  材料设计
-    compile 'com.android.support:design:25.3.1'
     //  glide
+    //  无缝换肤
+    //  okHttp3
+    // GSON
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support:design:25.3.1'
     compile 'com.github.bumptech.glide:glide:4.0.0-RC0'
     compile 'com.android.support:support-v4:25.3.1'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.0.0-RC0'
-    //  无缝换肤
     compile 'com.solid.skin:skinlibrary:1.4.5'
-    //  okHttp3
     compile 'com.squareup.okhttp3:okhttp:3.8.0'
-    // GSON
     compile 'com.google.code.gson:gson:2.8.1'
+    testCompile 'junit:junit:4.12'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.0.0-RC0'
 }

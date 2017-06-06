@@ -6,9 +6,9 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 /**
- * 拓展资源版块
+ * App版块
  */
-public class Resource {
+public class App {
 
     @SerializedName("error")
     private Boolean mError;

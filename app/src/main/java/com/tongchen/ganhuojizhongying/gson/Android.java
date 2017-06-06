@@ -3,91 +3,32 @@ package com.tongchen.ganhuojizhongying.gson;
 
 import com.google.gson.annotations.SerializedName;
 
-/**
- * Android
- */
+import java.util.List;
 
+/**
+ * Android版块
+ */
 public class Android {
 
-    @SerializedName("createdAt")
-    private String mCreatedAt;
-    @SerializedName("desc")
-    private String mDesc;
-    @SerializedName("publishedAt")
-    private String mPublishedAt;
-    @SerializedName("type")
-    private String mType;
-    @SerializedName("url")
-    private String mUrl;
-    @SerializedName("used")
-    private Boolean mUsed;
-    @SerializedName("who")
-    private String mWho;
-    @SerializedName("_id")
-    private String m_id;
+    @SerializedName("error")
+    private Boolean mError;
+    @SerializedName("results")
+    private List<Result> mResults;
 
-    public String getCreatedAt() {
-        return mCreatedAt;
+    public Boolean getError() {
+        return mError;
     }
 
-    public void setCreatedAt(String createdAt) {
-        mCreatedAt = createdAt;
+    public void setError(Boolean error) {
+        mError = error;
     }
 
-    public String getDesc() {
-        return mDesc;
+    public List<Result> getResults() {
+        return mResults;
     }
 
-    public void setDesc(String desc) {
-        mDesc = desc;
-    }
-
-    public String getPublishedAt() {
-        return mPublishedAt;
-    }
-
-    public void setPublishedAt(String publishedAt) {
-        mPublishedAt = publishedAt;
-    }
-
-    public String getType() {
-        return mType;
-    }
-
-    public void setType(String type) {
-        mType = type;
-    }
-
-    public String getUrl() {
-        return mUrl;
-    }
-
-    public void setUrl(String url) {
-        mUrl = url;
-    }
-
-    public Boolean getUsed() {
-        return mUsed;
-    }
-
-    public void setUsed(Boolean used) {
-        mUsed = used;
-    }
-
-    public String getWho() {
-        return mWho;
-    }
-
-    public void setWho(String who) {
-        mWho = who;
-    }
-
-    public String getId() {
-        return m_id;
-    }
-
-    public void setId(String _id) {
-        m_id = _id;
+    public void setResults(List<Result> results) {
+        mResults = results;
     }
 
 }
