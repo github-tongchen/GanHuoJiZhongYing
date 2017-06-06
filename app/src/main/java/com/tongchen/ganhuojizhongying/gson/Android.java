@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 /**
- * Android版块
+ * JSON的最外层
  */
 public class Android {
 

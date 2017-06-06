@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,13 +55,14 @@ public class AndroidFragment extends Fragment {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String responseText = response.body().string();
-                final Android android = UtilityUtil.handleAndroidResponse(responseText);
-                if (android != null) {
+                final Android ganHuo = UtilityUtil.handleAndroidResponse(responseText);
+                if (ganHuo != null) {
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            NewsAdapter fruitAdapter=new NewsAdapter(android.getResults());
-                            recyclerView.setAdapter(fruitAdapter);
+                            Log.d("Android",ganHuo.getResults().get(0).getDesc());
+                            NewsAdapter newsAdapter=new NewsAdapter(ganHuo.getResults());
+                            recyclerView.setAdapter(newsAdapter);
                         }
                     });
 
