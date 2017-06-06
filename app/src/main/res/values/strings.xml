@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">干货集中营APP</string>
+    <string name="app_name">干货集中营</string>
 
     <string name="tv_desc">TextView占位描述TextView占位描述TextView占位描述</string>
     <string name="tv_date">2017-06-06</string>

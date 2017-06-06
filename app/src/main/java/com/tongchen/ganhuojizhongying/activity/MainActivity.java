@@ -62,7 +62,7 @@ public class MainActivity extends SkinBaseActivity {
     private void initViews() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        dynamicAddView(toolbar, "background", R.color.colorPrimaryDark);
+        dynamicAddView(toolbar, "background", R.color.colorPrimary);
 
         tabLyt = (TabLayout) findViewById(R.id.tabLyt);
         //  使TabLayout的指示器支持换肤

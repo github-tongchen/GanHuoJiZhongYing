@@ -5,14 +5,13 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.tongchen.ganhuojizhongying.R;
 import com.tongchen.ganhuojizhongying.adapter.NewsAdapter;
-import com.tongchen.ganhuojizhongying.gson.Android;
+import com.tongchen.ganhuojizhongying.gson.GanHuo;
 import com.tongchen.ganhuojizhongying.util.HttpUtil;
 import com.tongchen.ganhuojizhongying.util.UtilityUtil;
 
@@ -55,12 +54,11 @@ public class AndroidFragment extends Fragment {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String responseText = response.body().string();
-                final Android ganHuo = UtilityUtil.handleAndroidResponse(responseText);
+                final GanHuo ganHuo = UtilityUtil.handleGanHuoResponse(responseText);
                 if (ganHuo != null) {
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Log.d("Android",ganHuo.getResults().get(0).getDesc());
                             NewsAdapter newsAdapter=new NewsAdapter(ganHuo.getResults());
                             recyclerView.setAdapter(newsAdapter);
                         }

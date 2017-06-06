@@ -10,4 +10,6 @@
     <color name="tab_text">#78ffffff</color>
 
     <color name="fragment_news">#c1c1c1</color>
+
+    <color name="item_news">#32ffffff</color>
 </resources>

@@ -1,4 +1,3 @@
-
 package com.tongchen.ganhuojizhongying.gson;
 
 import com.google.gson.annotations.SerializedName;
@@ -8,7 +7,8 @@ import java.util.List;
 /**
  * JSON的最外层
  */
-public class Android {
+
+public class GanHuo {
 
     @SerializedName("error")
     private Boolean mError;

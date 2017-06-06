@@ -3,7 +3,7 @@ package com.tongchen.ganhuojizhongying.util;
 import android.text.TextUtils;
 
 import com.google.gson.Gson;
-import com.tongchen.ganhuojizhongying.gson.Android;
+import com.tongchen.ganhuojizhongying.gson.GanHuo;
 
 /**
  * Created by TongChen on 2017/6/5.
@@ -13,9 +13,9 @@ import com.tongchen.ganhuojizhongying.gson.Android;
 
 public class UtilityUtil {
 
-    public static Android handleAndroidResponse(String response) {
+    public static GanHuo handleGanHuoResponse(String response) {
         if (!TextUtils.isEmpty(response)) {
-            return new Gson().fromJson(response, Android.class);
+            return new Gson().fromJson(response, GanHuo.class);
         }
         return null;
     }

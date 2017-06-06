@@ -67,8 +67,10 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         final Result result = mDataList.get(position);
-        if(result.getImages() !=null){
+        if (result.getImages() != null) {
             Glide.with(mContext).load(result.getImages().get(0)).into(holder.previewIv);
+        } else {
+            holder.previewIv.setVisibility(View.GONE);
         }
         holder.descTv.setText(result.getDesc());
         holder.dateTv.setText(result.getPublishedAt());
