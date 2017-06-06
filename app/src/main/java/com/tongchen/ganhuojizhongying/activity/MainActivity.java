@@ -1,10 +1,16 @@
 package com.tongchen.ganhuojizhongying.activity;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
+import android.widget.Toast;
 
 import com.tongchen.ganhuojizhongying.R;
 import com.tongchen.ganhuojizhongying.adapter.FragmentPageAdapter;
@@ -17,8 +23,6 @@ import java.util.List;
 import solid.ren.skinlibrary.base.SkinBaseActivity;
 
 public class MainActivity extends SkinBaseActivity {
-
-    private static final String TAG = "MainActivity";
 
     private List<String> mTitles = new ArrayList<>();
 
@@ -33,9 +37,26 @@ public class MainActivity extends SkinBaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+        }
+
         initViews();
         initCategories();
         initDatas();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case 1:
+                if (grantResults.length > 0 && grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(MainActivity.this, "拒绝权限程序将无法使用", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+                break;
+            default:
+        }
     }
 
     private void initViews() {
@@ -59,7 +80,7 @@ public class MainActivity extends SkinBaseActivity {
         mTitles.add(Category.RECOMMEND);
         mTitles.add(Category.VIDEO);
         mTitles.add(Category.APP);
-        mTitles.add(Category.WELFARE);
+        //mTitles.add(Category.WELFARE);
     }
 
     private void initDatas() {
@@ -71,30 +92,6 @@ public class MainActivity extends SkinBaseActivity {
         mAdapter = new FragmentPageAdapter(getSupportFragmentManager(), MainActivity.this, mFragments, mTitles);
         viewpager.setAdapter(mAdapter);
         tabLyt.setupWithViewPager(viewpager);
-        /*HttpUtil.sendOkHttpRequest(address, new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                e.printStackTrace();
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                String responseText = response.body().string();
-                GanHuo ganHuo = UtilityUtil.handleClassifyResponse(responseText);
-                if (ganHuo != null) {
-                    mAdapter = new FragmentPageAdapter(getSupportFragmentManager(), MainActivity.this, mFragments);
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            viewpager.setAdapter(mAdapter);
-
-                            tabLyt.setupWithViewPager(viewpager);
-                        }
-                    });
-                }
-
-            }
-        });*/
     }
 
 

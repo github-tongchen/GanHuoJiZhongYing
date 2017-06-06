@@ -8,4 +8,6 @@
     <color name="tab_indicator">#ffffff</color>
     <color name="tab_select_text">#ffffff</color>
     <color name="tab_text">#78ffffff</color>
+
+    <color name="fragment_news">#c1c1c1</color>
 </resources>
