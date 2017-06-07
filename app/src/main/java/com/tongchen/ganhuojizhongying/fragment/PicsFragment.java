@@ -71,7 +71,7 @@ public class PicsFragment extends Fragment {
 
         StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(staggeredGridLayoutManager);
-
+        //  解决RecyclerView 瀑布流 item高度不能自适应的问题 ps:快速滑动时图片大小不能正常显示，依然有问题
         staggeredGridLayoutManager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_NONE);
 
     }
