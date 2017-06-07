@@ -4,14 +4,14 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.tongchen.ganhuojizhongying.R;
-import com.tongchen.ganhuojizhongying.adapter.NewsAdapter;
+import com.tongchen.ganhuojizhongying.adapter.PicsAdapter;
 import com.tongchen.ganhuojizhongying.constant.Url;
 import com.tongchen.ganhuojizhongying.gson.GanHuo;
 import com.tongchen.ganhuojizhongying.util.HttpUtil;
@@ -23,21 +23,21 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public class NewsFragment extends Fragment {
+public class PicsFragment extends Fragment {
 
     private static final String ARG_TITLE = "title";
     //  当前所处Tab的分类
     private String mTitle;
-
+    
     private View view;
     private RecyclerView recyclerView;
 
-    public NewsFragment() {
+    public PicsFragment() {
 
     }
 
-    public static NewsFragment newInstance(String title) {
-        NewsFragment fragment = new NewsFragment();
+    public static PicsFragment newInstance(String title) {
+        PicsFragment fragment = new PicsFragment();
         Bundle bundle = new Bundle();
         bundle.putString(ARG_TITLE, title);
         fragment.setArguments(bundle);
@@ -53,28 +53,31 @@ public class NewsFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_news, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
+        view= inflater.inflate(R.layout.fragment_pics, container, false);
         return view;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
-        findViews();
+        
+        initViews();
         loadContent();
     }
 
-    private void findViews() {
+    private void initViews() {
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
-        recyclerView.setLayoutManager(linearLayoutManager);
+        StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(staggeredGridLayoutManager);
+
+        staggeredGridLayoutManager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_NONE);
+
     }
 
     private void loadContent() {
-        String address = Url.GANHUO_DATA + mTitle + "/10/1";
+        String address = Url.GANHUO_DATA + mTitle + "/50/1";
         HttpUtil.sendOkHttpRequest(address, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -90,13 +93,12 @@ public class NewsFragment extends Fragment {
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            NewsAdapter newsAdapter = new NewsAdapter(ganHuo.getResults());
-                            recyclerView.setAdapter(newsAdapter);
+                            PicsAdapter picsAdapter = new PicsAdapter(ganHuo.getResults());
+                            recyclerView.setAdapter(picsAdapter);
                         }
                     });
                 }
             }
         });
     }
-
 }

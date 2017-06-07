@@ -16,6 +16,7 @@ import com.tongchen.ganhuojizhongying.R;
 import com.tongchen.ganhuojizhongying.adapter.FragmentPageAdapter;
 import com.tongchen.ganhuojizhongying.constant.Category;
 import com.tongchen.ganhuojizhongying.fragment.NewsFragment;
+import com.tongchen.ganhuojizhongying.fragment.PicsFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -88,8 +89,13 @@ public class MainActivity extends SkinBaseActivity {
     private void initDatas() {
         int i = 0;
         while (i < mTitles.size()) {
-            NewsFragment fragment = NewsFragment.newInstance(mTitles.get(i));
-            mFragments.add(fragment);
+            if (i == mTitles.size() - 1) {
+                PicsFragment fragment = PicsFragment.newInstance(mTitles.get(i));
+                mFragments.add(fragment);
+            } else {
+                NewsFragment fragment = NewsFragment.newInstance(mTitles.get(i));
+                mFragments.add(fragment);
+            }
             i++;
         }
         mAdapter = new FragmentPageAdapter(getSupportFragmentManager(), MainActivity.this, mFragments, mTitles);
