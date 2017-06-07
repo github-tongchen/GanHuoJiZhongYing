@@ -8,23 +8,23 @@ package com.tongchen.ganhuojizhongying.constant;
 
 public class Category {
 
-    public static final String ALL = "全部";
+    public static final int ALL = 0;
 
-    public static final String ANDROID = "Android";
+    public static final int ANDROID = 1;
 
-    public static final String IOS = "iOS";
+    public static final int IOS = 2;
 
-    public static final String FONT_END = "前端";
+    public static final int FONT_END = 3;
 
-    public static final String RESOURCE = "拓展资源";
+    public static final int RESOURCE = 4;
 
-    public static final String VIDEO = "休息视频";
+    public static final int VIDEO = 5;
 
-    public static final String RECOMMEND = "瞎推荐";
+    public static final int RECOMMEND = 6;
 
-    public static final String APP = "App";
+    public static final int APP = 7;
 
-    public static final String WELFARE = "福利";
+    public static final int WELFARE = 8;
 
-    public static final String HEAVEN_HOUND = "天狗";
+    public static final int HEAVEN_HOUND = 9;
 }

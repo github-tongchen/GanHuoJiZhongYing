@@ -15,7 +15,7 @@ import android.widget.Toast;
 import com.tongchen.ganhuojizhongying.R;
 import com.tongchen.ganhuojizhongying.adapter.FragmentPageAdapter;
 import com.tongchen.ganhuojizhongying.constant.Category;
-import com.tongchen.ganhuojizhongying.fragment.AndroidFragment;
+import com.tongchen.ganhuojizhongying.fragment.NewsFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +31,8 @@ public class MainActivity extends SkinBaseActivity {
 
     private List<Fragment> mFragments = new ArrayList<>();
     private FragmentPageAdapter mAdapter;
+
+    private String[] mTitleArray = {"全部", "Android", "iOS", "前端", "拓展资源", "休息视频", "瞎推荐", "App", "福利", "天狗"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,21 +74,22 @@ public class MainActivity extends SkinBaseActivity {
     }
 
     private void initCategories() {
-        mTitles.add(Category.ALL);
-        mTitles.add(Category.ANDROID);
-        mTitles.add(Category.IOS);
-        mTitles.add(Category.FONT_END);
-        mTitles.add(Category.RESOURCE);
-        mTitles.add(Category.RECOMMEND);
-        mTitles.add(Category.VIDEO);
-        mTitles.add(Category.APP);
-        //mTitles.add(Category.WELFARE);
+        //mTitles.add(mTitleArray[Category.ALL]);
+        mTitles.add(mTitleArray[Category.ANDROID]);
+        mTitles.add(mTitleArray[Category.IOS]);
+        mTitles.add(mTitleArray[Category.FONT_END]);
+        mTitles.add(mTitleArray[Category.RESOURCE]);
+        mTitles.add(mTitleArray[Category.RECOMMEND]);
+        mTitles.add(mTitleArray[Category.VIDEO]);
+        mTitles.add(mTitleArray[Category.APP]);
+        mTitles.add(mTitleArray[Category.WELFARE]);
     }
 
     private void initDatas() {
         int i = 0;
         while (i < mTitles.size()) {
-            mFragments.add(new AndroidFragment());
+            NewsFragment fragment = NewsFragment.newInstance(mTitles.get(i));
+            mFragments.add(fragment);
             i++;
         }
         mAdapter = new FragmentPageAdapter(getSupportFragmentManager(), MainActivity.this, mFragments, mTitles);
