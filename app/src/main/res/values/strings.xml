@@ -3,6 +3,8 @@
 
     <string name="tv_desc">TextView占位描述TextView占位描述TextView占位描述</string>
     <string name="tv_date">2017-06-06</string>
+    <string name="tv_tip">点击或上滑加载更多内容</string>
+    <string name="tv_tip_loading">正在加载更多内容···</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->

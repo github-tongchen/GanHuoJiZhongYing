@@ -20,5 +20,9 @@ public class LoadingType {
      * 上滑加载更多数据
      */
     public static final int TYPE_MORE = 2;
+    /**
+     * 正在加载中
+     */
+    public static final int TYPE_LOADING = 3;
 
 }
