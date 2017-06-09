@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,13 +48,13 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     static class FootViewHolder extends RecyclerView.ViewHolder {
-        CardView cardView;
+        RelativeLayout rLyt;
         TextView tipTv;
 
         public FootViewHolder(View itemView) {
             super(itemView);
-            cardView = (CardView) itemView;
-            tipTv = (TextView) cardView.findViewById(R.id.tv_tip);
+            rLyt = (RelativeLayout) itemView;
+            tipTv = (TextView) rLyt.findViewById(R.id.tv_tip);
         }
     }
 
@@ -84,7 +85,7 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             View view = LayoutInflater.from(mContext).inflate(R.layout.view_item_news_footer, parent, false);
             final FootViewHolder footViewHolder = new FootViewHolder(view);
 
-            footViewHolder.cardView.setOnClickListener(new View.OnClickListener() {
+            footViewHolder.rLyt.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     int position = footViewHolder.getAdapterPosition();

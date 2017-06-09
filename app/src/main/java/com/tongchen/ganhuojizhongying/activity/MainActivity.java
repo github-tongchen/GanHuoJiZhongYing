@@ -103,5 +103,4 @@ public class MainActivity extends SkinBaseActivity {
         tabLyt.setupWithViewPager(viewpager);
     }
 
-
 }
