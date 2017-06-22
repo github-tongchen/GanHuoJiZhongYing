@@ -1,6 +1,7 @@
 package com.tongchen.ganhuojizhongying.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.tongchen.ganhuojizhongying.R;
+import com.tongchen.ganhuojizhongying.activity.NewsContentActivity;
 import com.tongchen.ganhuojizhongying.constant.LoadingType;
 import com.tongchen.ganhuojizhongying.gson.Result;
 
@@ -76,7 +78,10 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 public void onClick(View v) {
                     int position = itemViewHolder.getAdapterPosition();
                     Result result = mDataList.get(position);
-                    Toast.makeText(mContext, result.getDesc(), Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(mContext, result.getDesc(), Toast.LENGTH_SHORT).show();
+                    Intent intent=new Intent(mContext, NewsContentActivity.class);
+                    intent.putExtra("url",result.getUrl());
+                    mContext.startActivity(intent);
                 }
             });
             return itemViewHolder;
