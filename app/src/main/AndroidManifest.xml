@@ -21,7 +21,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.NewsContentActivity" />
-        <activity android:name=".activity.MainActivity$PicActivity"></activity>
+        <activity android:name=".activity.MainActivity$PicActivity" />
+        <activity android:name=".activity.PicsActivity"></activity>
     </application>
 
 </manifest>

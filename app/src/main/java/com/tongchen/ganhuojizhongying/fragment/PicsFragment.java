@@ -5,8 +5,9 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,7 +38,7 @@ public class PicsFragment extends Fragment {
     private int[] lastVisiblePositions;
     private int lastVisiblePosition;
     //  已经加载的页数
-    private int loadedPageNum=1;
+    private int loadedPageNum = 1;
 
     private View view;
     private SwipeRefreshLayout swipeRefreshLayout;
@@ -45,7 +46,7 @@ public class PicsFragment extends Fragment {
 
     private PicsAdapter picsAdapter;
     private List<Result> resultList = new ArrayList<>();
-    private StaggeredGridLayoutManager staggeredGridLayoutManager;
+    private GridLayoutManager gridLayoutManager;
 
     public PicsFragment() {
 
@@ -99,16 +100,15 @@ public class PicsFragment extends Fragment {
         });
 
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
-        staggeredGridLayoutManager = new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL);
-        recyclerView.setLayoutManager(staggeredGridLayoutManager);
-        //  解决RecyclerView 瀑布流 item高度不能自适应的问题 ps:快速滑动时图片大小不能正常显示，依然有问题
-        staggeredGridLayoutManager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_NONE);
+        gridLayoutManager = new GridLayoutManager(getActivity(), 2);
+        recyclerView.setLayoutManager(gridLayoutManager);
+
 
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
-                if (newState == RecyclerView.SCROLL_STATE_IDLE && lastVisiblePosition + 1 == picsAdapter.getItemCount()) {
+                if (lastVisiblePosition + 1 == picsAdapter.getItemCount()) {
                     loadContent(LoadingType.TYPE_MORE);
                 }
             }
@@ -116,10 +116,11 @@ public class PicsFragment extends Fragment {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                lastVisiblePositions = staggeredGridLayoutManager.findLastCompletelyVisibleItemPositions(null);
-                lastVisiblePosition = findMax(lastVisiblePositions);
+                lastVisiblePosition = gridLayoutManager.findLastVisibleItemPosition();
+                Log.d("Nsize","3---"+lastVisiblePosition);
             }
         });
+
     }
 
     //找到数组中的最大值
@@ -179,7 +180,7 @@ public class PicsFragment extends Fragment {
                                     swipeRefreshLayout.setRefreshing(false);
                                     break;
                                 case LoadingType.TYPE_MORE:
-                                    for(Result result:ganHuo.getResults()){
+                                    for (Result result : ganHuo.getResults()) {
                                         resultList.add(result);
                                     }
                                     picsAdapter.notifyDataSetChanged();

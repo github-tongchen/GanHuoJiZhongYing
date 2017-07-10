@@ -7,11 +7,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.tongchen.ganhuojizhongying.R;
+import com.tongchen.ganhuojizhongying.ScreenUtil;
 import com.tongchen.ganhuojizhongying.gson.Result;
 
 import java.util.List;
@@ -52,9 +54,9 @@ public class PicsAdapter extends RecyclerView.Adapter<PicsAdapter.ViewHolder> {
         View view = LayoutInflater.from(mContext).inflate(R.layout.view_item_pics, parent, false);
         final ViewHolder holder = new ViewHolder(view);
 
-        /*int width= ScreenUtil.getDisplayWidth(mContext)/3;
-        RelativeLayout.LayoutParams layoutParams=new RelativeLayout.LayoutParams(width, ViewGroup.LayoutParams.WRAP_CONTENT);
-        holder.previewIv.setLayoutParams(layoutParams);*/
+        int height= ScreenUtil.getDisplayHeight(mContext)/3;
+        RelativeLayout.LayoutParams layoutParams=new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,height);
+        holder.previewIv.setLayoutParams(layoutParams);
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
