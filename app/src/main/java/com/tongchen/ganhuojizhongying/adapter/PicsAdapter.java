@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.tongchen.ganhuojizhongying.R;
 import com.tongchen.ganhuojizhongying.ScreenUtil;
+import com.tongchen.ganhuojizhongying.constant.Url;
 import com.tongchen.ganhuojizhongying.gson.Result;
 
 import java.util.List;
@@ -54,8 +55,8 @@ public class PicsAdapter extends RecyclerView.Adapter<PicsAdapter.ViewHolder> {
         View view = LayoutInflater.from(mContext).inflate(R.layout.view_item_pics, parent, false);
         final ViewHolder holder = new ViewHolder(view);
 
-        int height= ScreenUtil.getDisplayHeight(mContext)/3;
-        RelativeLayout.LayoutParams layoutParams=new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,height);
+        int height = ScreenUtil.getDisplayHeight(mContext) / 3;
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, height);
         holder.previewIv.setLayoutParams(layoutParams);
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
@@ -72,7 +73,7 @@ public class PicsAdapter extends RecyclerView.Adapter<PicsAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Result result = mDataList.get(position);
-        Glide.with(mContext).load(result.getUrl()).into(holder.previewIv);
+        Glide.with(mContext).load(result.getUrl() + Url.THUMBNAIL_SUFFIX).into(holder.previewIv);
         holder.whoTv.setText(result.getWho());
     }
 

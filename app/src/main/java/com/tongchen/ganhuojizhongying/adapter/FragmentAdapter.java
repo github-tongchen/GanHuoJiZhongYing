@@ -13,21 +13,19 @@ import java.util.List;
  * Description:
  */
 
-public class FragmentPageAdapter extends FragmentPagerAdapter {
+public class FragmentAdapter extends FragmentPagerAdapter {
 
-    private Context mContext;
     private List<Fragment> mFragments;
     private List<String> mTitles;
 
-    public FragmentPageAdapter(FragmentManager fm) {
+    public FragmentAdapter(FragmentManager fm) {
         super(fm);
     }
 
-    public FragmentPageAdapter(FragmentManager fm, Context context, List<Fragment> fragments,List<String> titles) {
+    public FragmentAdapter(FragmentManager fm, Context context, List<Fragment> fragments, List<String> titles) {
         super(fm);
-        mContext = context;
         mFragments = fragments;
-        mTitles=titles;
+        mTitles = titles;
     }
 
     @Override

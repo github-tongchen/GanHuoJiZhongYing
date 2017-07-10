@@ -13,9 +13,9 @@ import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
 
 import com.tongchen.ganhuojizhongying.R;
-import com.tongchen.ganhuojizhongying.adapter.FragmentPageAdapter;
+import com.tongchen.ganhuojizhongying.adapter.FragmentAdapter;
 import com.tongchen.ganhuojizhongying.constant.Category;
-import com.tongchen.ganhuojizhongying.fragment.NewsFragment;
+import com.tongchen.ganhuojizhongying.fragment.TextsFragment;
 import com.tongchen.ganhuojizhongying.fragment.PicsFragment;
 
 import java.util.ArrayList;
@@ -31,7 +31,7 @@ public class MainActivity extends SkinBaseActivity {
     private ViewPager viewpager;
 
     private List<Fragment> mFragments = new ArrayList<>();
-    private FragmentPageAdapter mAdapter;
+    private FragmentAdapter mAdapter;
 
     private String[] mTitleArray = {"全部", "Android", "iOS", "前端", "拓展资源", "休息视频", "瞎推荐", "App", "福利", "天狗"};
 
@@ -93,12 +93,12 @@ public class MainActivity extends SkinBaseActivity {
                 PicsFragment fragment = PicsFragment.newInstance(mTitles.get(i));
                 mFragments.add(fragment);
             } else {
-                NewsFragment fragment = NewsFragment.newInstance(mTitles.get(i));
+                TextsFragment fragment = TextsFragment.newInstance(mTitles.get(i));
                 mFragments.add(fragment);
             }
             i++;
         }
-        mAdapter = new FragmentPageAdapter(getSupportFragmentManager(), MainActivity.this, mFragments, mTitles);
+        mAdapter = new FragmentAdapter(getSupportFragmentManager(), MainActivity.this, mFragments, mTitles);
         viewpager.setAdapter(mAdapter);
         tabLyt.setupWithViewPager(viewpager);
     }

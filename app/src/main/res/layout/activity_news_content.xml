@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorAccent"
     android:orientation="vertical"
-    tools:context="com.tongchen.ganhuojizhongying.activity.NewsContentActivity">
+    tools:context="com.tongchen.ganhuojizhongying.activity.TextsActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"

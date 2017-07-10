@@ -1,5 +1,6 @@
 package com.tongchen.ganhuojizhongying.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,9 +8,15 @@ import android.webkit.WebView;
 
 import com.tongchen.ganhuojizhongying.R;
 
-public class NewsContentActivity extends AppCompatActivity {
+public class TextsActivity extends AppCompatActivity {
 
     private WebView webView;
+
+    public static void start(Context context,String url) {
+        Intent intent = new Intent(context, TextsActivity.class);
+        intent.putExtra("url",url);
+        context.startActivity(intent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +49,7 @@ public class NewsContentActivity extends AppCompatActivity {
                 super.onPageFinished(view, url);
                 if (url.contains("http://mp.weixin.qq.com")) {
                     LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) webView.getLayoutParams();
-                    lp.height = ScreenUtil.getDisplayHeight(NewsContentActivity.this);
+                    lp.height = ScreenUtil.getDisplayHeight(TextsActivity.this);
                     webView.setLayoutParams(lp);
                 }
             }

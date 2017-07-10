@@ -14,7 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.tongchen.ganhuojizhongying.R;
-import com.tongchen.ganhuojizhongying.adapter.NewsAdapter;
+import com.tongchen.ganhuojizhongying.adapter.TextsAdapter;
 import com.tongchen.ganhuojizhongying.constant.LoadingType;
 import com.tongchen.ganhuojizhongying.constant.Url;
 import com.tongchen.ganhuojizhongying.gson.GanHuo;
@@ -30,7 +30,7 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public class NewsFragment extends Fragment {
+public class TextsFragment extends Fragment {
 
     private static final String ARG_TITLE = "title";
     //  当前所处Tab的分类
@@ -46,14 +46,14 @@ public class NewsFragment extends Fragment {
 
     private List<Result> resultList = new ArrayList<>();
 
-    private NewsAdapter newsAdapter;
+    private TextsAdapter newsAdapter;
 
-    public NewsFragment() {
+    public TextsFragment() {
 
     }
 
-    public static NewsFragment newInstance(String title) {
-        NewsFragment fragment = new NewsFragment();
+    public static TextsFragment newInstance(String title) {
+        TextsFragment fragment = new TextsFragment();
         Bundle bundle = new Bundle();
         bundle.putString(ARG_TITLE, title);
         fragment.setArguments(bundle);
@@ -157,7 +157,7 @@ public class NewsFragment extends Fragment {
                                 case LoadingType.TYPE_INIT:
                                     resultList.clear();
                                     resultList.addAll(ganHuo.getResults());
-                                    newsAdapter = new NewsAdapter(resultList);
+                                    newsAdapter = new TextsAdapter(resultList);
                                     recyclerView.setAdapter(newsAdapter);
                                     break;
                                 case LoadingType.TYPE_REFRESH:

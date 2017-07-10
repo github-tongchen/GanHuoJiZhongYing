@@ -1,7 +1,6 @@
 package com.tongchen.ganhuojizhongying.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,8 +13,9 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.tongchen.ganhuojizhongying.R;
-import com.tongchen.ganhuojizhongying.activity.NewsContentActivity;
+import com.tongchen.ganhuojizhongying.activity.TextsActivity;
 import com.tongchen.ganhuojizhongying.constant.LoadingType;
+import com.tongchen.ganhuojizhongying.constant.Url;
 import com.tongchen.ganhuojizhongying.gson.Result;
 
 import java.util.List;
@@ -26,7 +26,7 @@ import java.util.List;
  * Description:
  */
 
-public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class TextsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private static final int TYPE_ITEM = 0;
     private static final int TYPE_FOOTER = 1;
@@ -60,7 +60,7 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
     }
 
-    public NewsAdapter(List<Result> dataList) {
+    public TextsAdapter(List<Result> dataList) {
         mDataList = dataList;
     }
 
@@ -70,7 +70,7 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             mContext = parent.getContext();
         }
         if (viewType == TYPE_ITEM) {
-            View view = LayoutInflater.from(mContext).inflate(R.layout.view_item_news, parent, false);
+            View view = LayoutInflater.from(mContext).inflate(R.layout.view_item_texts, parent, false);
             final ItemViewHolder itemViewHolder = new ItemViewHolder(view);
 
             itemViewHolder.cardView.setOnClickListener(new View.OnClickListener() {
@@ -78,16 +78,13 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 public void onClick(View v) {
                     int position = itemViewHolder.getAdapterPosition();
                     Result result = mDataList.get(position);
-                    //Toast.makeText(mContext, result.getDesc(), Toast.LENGTH_SHORT).show();
-                    Intent intent=new Intent(mContext, NewsContentActivity.class);
-                    intent.putExtra("url",result.getUrl());
-                    mContext.startActivity(intent);
+                    TextsActivity.start(mContext, result.getUrl());
                 }
             });
             return itemViewHolder;
 
         } else if (viewType == TYPE_FOOTER) {
-            View view = LayoutInflater.from(mContext).inflate(R.layout.view_item_news_footer, parent, false);
+            View view = LayoutInflater.from(mContext).inflate(R.layout.view_item_texts_footer, parent, false);
             final FootViewHolder footViewHolder = new FootViewHolder(view);
 
             footViewHolder.rLyt.setOnClickListener(new View.OnClickListener() {
@@ -109,7 +106,7 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             ItemViewHolder itemViewHolder = (ItemViewHolder) holder;
             Result result = mDataList.get(position);
             if (result.getImages() != null) {
-                Glide.with(mContext).load(result.getImages().get(0)).into(itemViewHolder.previewIv);
+                Glide.with(mContext).load(result.getImages().get(0) + Url.THUMBNAIL_SUFFIX).into(itemViewHolder.previewIv);
             } else {
                 itemViewHolder.previewIv.setVisibility(View.GONE);
             }

@@ -20,7 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.NewsContentActivity" />
+        <activity android:name=".activity.TextsActivity" />
         <activity android:name=".activity.MainActivity$PicActivity" />
         <activity android:name=".activity.PicsActivity"></activity>
     </application>
