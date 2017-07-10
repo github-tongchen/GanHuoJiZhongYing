@@ -123,16 +123,6 @@ public class PicsFragment extends Fragment {
 
     }
 
-    //找到数组中的最大值
-    private int findMax(int[] lastPositions) {
-        int max = lastPositions[0];
-        for (int value : lastPositions) {
-            if (value > max) {
-                max = value;
-            }
-        }
-        return max;
-    }
 
     //  根据加载类型发送不同的
     private void loadContent(final int loadingType) {
