@@ -9,11 +9,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.tongchen.ganhuojizhongying.R;
 import com.tongchen.ganhuojizhongying.ScreenUtil;
+import com.tongchen.ganhuojizhongying.activity.PicsActivity;
 import com.tongchen.ganhuojizhongying.constant.Url;
 import com.tongchen.ganhuojizhongying.gson.Result;
 
@@ -64,7 +64,7 @@ public class PicsAdapter extends RecyclerView.Adapter<PicsAdapter.ViewHolder> {
             public void onClick(View v) {
                 int position = holder.getAdapterPosition();
                 Result result = mDataList.get(position);
-                Toast.makeText(mContext, "" + position, Toast.LENGTH_SHORT).show();
+                PicsActivity.start(mContext, position, result.getUrl(),mDataList);
             }
         });
         return holder;
@@ -73,7 +73,7 @@ public class PicsAdapter extends RecyclerView.Adapter<PicsAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Result result = mDataList.get(position);
-        Glide.with(mContext).load(result.getUrl() + Url.THUMBNAIL_SUFFIX).into(holder.previewIv);
+        Glide.with(mContext).load(result.getUrl() + Url.IMAGE_WIDTH_SUFFIX+ ScreenUtil.getDisplayWidth(mContext) / 2).into(holder.previewIv);
         holder.whoTv.setText(result.getWho());
     }
 

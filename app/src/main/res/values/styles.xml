@@ -9,4 +9,9 @@
         <item name="android:textColorPrimary">@color/tab_indicator</item>
     </style>
 
+    <style name="FullScreenTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@null</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
 </resources>

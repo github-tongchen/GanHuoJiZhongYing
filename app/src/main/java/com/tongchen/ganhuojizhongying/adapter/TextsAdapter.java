@@ -106,7 +106,7 @@ public class TextsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             ItemViewHolder itemViewHolder = (ItemViewHolder) holder;
             Result result = mDataList.get(position);
             if (result.getImages() != null) {
-                Glide.with(mContext).load(result.getImages().get(0) + Url.THUMBNAIL_SUFFIX).into(itemViewHolder.previewIv);
+                Glide.with(mContext).load(result.getImages().get(0) + Url.IMAGE_HEIGHT_SUFFIX + itemViewHolder.previewIv.getHeight()).into(itemViewHolder.previewIv);
             } else {
                 itemViewHolder.previewIv.setVisibility(View.GONE);
             }

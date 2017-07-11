@@ -117,7 +117,7 @@ public class TextsFragment extends Fragment {
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
                 lastVisiblePosition = linearLayoutManager.findLastVisibleItemPosition();
-                Log.d("Nsize","3---"+lastVisiblePosition);
+                Log.d("Nsize", "3---" + lastVisiblePosition);
             }
         });
     }

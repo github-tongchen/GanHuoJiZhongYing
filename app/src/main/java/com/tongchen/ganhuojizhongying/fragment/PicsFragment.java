@@ -35,7 +35,7 @@ public class PicsFragment extends Fragment {
     private static final String ARG_TITLE = "title";
     //  当前所处Tab的分类
     private String mTitle;
-    private int[] lastVisiblePositions;
+
     private int lastVisiblePosition;
     //  已经加载的页数
     private int loadedPageNum = 1;

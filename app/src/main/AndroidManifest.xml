@@ -21,8 +21,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.TextsActivity" />
-        <activity android:name=".activity.MainActivity$PicActivity" />
-        <activity android:name=".activity.PicsActivity"></activity>
+        <activity
+            android:name=".activity.PicsActivity"
+            android:theme="@style/FullScreenTheme" />
     </application>
 
 </manifest>

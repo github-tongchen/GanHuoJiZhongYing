@@ -3,12 +3,13 @@ package com.tongchen.ganhuojizhongying.gson;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * 其他的8个Model共用的版块
  */
-public class Result {
+public class Result implements Serializable{
 
     @SerializedName("createdAt")
     private String mCreatedAt;
