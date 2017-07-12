@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -117,7 +116,6 @@ public class TextsFragment extends Fragment {
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
                 lastVisiblePosition = linearLayoutManager.findLastVisibleItemPosition();
-                Log.d("Nsize", "3---" + lastVisiblePosition);
             }
         });
     }
@@ -167,9 +165,7 @@ public class TextsFragment extends Fragment {
                                     swipeRefreshLayout.setRefreshing(false);
                                     break;
                                 case LoadingType.TYPE_MORE:
-                                    Log.d("Nsize", "0---" + resultList.size());
                                     resultList.addAll(ganHuo.getResults());
-                                    Log.d("Nsize", "1---" + resultList.size());
                                     newsAdapter.notifyDataSetChanged();
                                     break;
                             }
@@ -178,6 +174,11 @@ public class TextsFragment extends Fragment {
                 }
             }
         });
+    }
+
+    //  返回到顶部
+    public void back2Top() {
+        recyclerView.smoothScrollToPosition(0);
     }
 
 }

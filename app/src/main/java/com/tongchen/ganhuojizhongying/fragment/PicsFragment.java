@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -117,7 +116,6 @@ public class PicsFragment extends Fragment {
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
                 lastVisiblePosition = gridLayoutManager.findLastVisibleItemPosition();
-                Log.d("Nsize","3---"+lastVisiblePosition);
             }
         });
 
@@ -181,5 +179,9 @@ public class PicsFragment extends Fragment {
                 }
             }
         });
+    }
+
+    public void back2Top() {
+        recyclerView.smoothScrollToPosition(0);
     }
 }

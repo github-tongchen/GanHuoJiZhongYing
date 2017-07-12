@@ -4,31 +4,38 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.tongchen.ganhuojizhongying.R;
 import com.tongchen.ganhuojizhongying.adapter.FragmentAdapter;
 import com.tongchen.ganhuojizhongying.constant.Category;
-import com.tongchen.ganhuojizhongying.fragment.TextsFragment;
 import com.tongchen.ganhuojizhongying.fragment.PicsFragment;
+import com.tongchen.ganhuojizhongying.fragment.TextsFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import solid.ren.skinlibrary.base.SkinBaseActivity;
 
-public class MainActivity extends SkinBaseActivity {
+public class MainActivity extends SkinBaseActivity implements View.OnClickListener {
 
     private List<String> mTitles = new ArrayList<>();
 
     private TabLayout tabLyt;
     private ViewPager viewpager;
+    private DrawerLayout drawerLayout;
 
     private List<Fragment> mFragments = new ArrayList<>();
     private FragmentAdapter mAdapter;
@@ -72,6 +79,16 @@ public class MainActivity extends SkinBaseActivity {
         dynamicAddView(tabLyt, "tabLayoutIndicator", R.color.tab_indicator);
 
         viewpager = (ViewPager) findViewById(R.id.viewpager);
+
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
+        }
+        drawerLayout = (DrawerLayout) findViewById(R.id.dlyt_main);
+
+        FloatingActionButton fltBtn = (FloatingActionButton) findViewById(R.id.fab);
+        fltBtn.setOnClickListener(this);
     }
 
     private void initCategories() {
@@ -103,4 +120,28 @@ public class MainActivity extends SkinBaseActivity {
         tabLyt.setupWithViewPager(viewpager);
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.fab:
+                int index = viewpager.getCurrentItem();
+                if (index < mTitles.size() - 1) {
+                    ((TextsFragment) mFragments.get(index)).back2Top();
+                } else {
+                    ((PicsFragment) mFragments.get(index)).back2Top();
+                }
+                break;
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            //  HomeAsUp按钮的id永远都是android.R.id.home
+            case android.R.id.home:
+                drawerLayout.openDrawer(GravityCompat.START);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

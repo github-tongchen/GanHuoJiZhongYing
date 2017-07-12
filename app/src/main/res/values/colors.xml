@@ -12,4 +12,7 @@
     <color name="fragment_news">#c1c1c1</color>
 
     <color name="item_news">#32ffffff</color>
+
+    <color name="item_news_footer">#98f7ec</color>
+
 </resources>
