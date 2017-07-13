@@ -8,12 +8,12 @@ import android.webkit.WebView;
 
 import com.tongchen.ganhuojizhongying.R;
 
-public class TextsActivity extends AppCompatActivity {
+public class TextActivity extends AppCompatActivity {
 
     private WebView webView;
 
     public static void start(Context context,String url) {
-        Intent intent = new Intent(context, TextsActivity.class);
+        Intent intent = new Intent(context, TextActivity.class);
         intent.putExtra("url",url);
         context.startActivity(intent);
     }
@@ -21,7 +21,7 @@ public class TextsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_news_content);
+        setContentView(R.layout.activity_text);
 
         Intent intent = getIntent();
         String url = intent.getStringExtra("url");
@@ -49,7 +49,7 @@ public class TextsActivity extends AppCompatActivity {
                 super.onPageFinished(view, url);
                 if (url.contains("http://mp.weixin.qq.com")) {
                     LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) webView.getLayoutParams();
-                    lp.height = ScreenUtil.getDisplayHeight(TextsActivity.this);
+                    lp.height = ScreenUtil.getDisplayHeight(TextActivity.this);
                     webView.setLayoutParams(lp);
                 }
             }

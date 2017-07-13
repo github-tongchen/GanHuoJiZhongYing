@@ -29,7 +29,7 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public class PicsFragment extends Fragment {
+public class PicFragment extends Fragment {
 
     private static final String ARG_TITLE = "title";
     //  当前所处Tab的分类
@@ -47,12 +47,12 @@ public class PicsFragment extends Fragment {
     private List<Result> resultList = new ArrayList<>();
     private GridLayoutManager gridLayoutManager;
 
-    public PicsFragment() {
+    public PicFragment() {
 
     }
 
-    public static PicsFragment newInstance(String title) {
-        PicsFragment fragment = new PicsFragment();
+    public static PicFragment newInstance(String title) {
+        PicFragment fragment = new PicFragment();
         Bundle bundle = new Bundle();
         bundle.putString(ARG_TITLE, title);
         fragment.setArguments(bundle);
@@ -69,7 +69,7 @@ public class PicsFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_pics, container, false);
+        view = inflater.inflate(R.layout.fragment_pic, container, false);
         return view;
     }
 

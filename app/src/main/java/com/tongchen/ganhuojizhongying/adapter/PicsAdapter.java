@@ -13,7 +13,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.tongchen.ganhuojizhongying.R;
 import com.tongchen.ganhuojizhongying.ScreenUtil;
-import com.tongchen.ganhuojizhongying.activity.PicsActivity;
+import com.tongchen.ganhuojizhongying.activity.PicActivity;
 import com.tongchen.ganhuojizhongying.constant.Url;
 import com.tongchen.ganhuojizhongying.gson.Result;
 
@@ -52,7 +52,7 @@ public class PicsAdapter extends RecyclerView.Adapter<PicsAdapter.ViewHolder> {
         if (mContext == null) {
             mContext = parent.getContext();
         }
-        View view = LayoutInflater.from(mContext).inflate(R.layout.view_item_pics, parent, false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.view_item_pic, parent, false);
         final ViewHolder holder = new ViewHolder(view);
 
         int height = ScreenUtil.getDisplayHeight(mContext) / 3;
@@ -64,7 +64,7 @@ public class PicsAdapter extends RecyclerView.Adapter<PicsAdapter.ViewHolder> {
             public void onClick(View v) {
                 int position = holder.getAdapterPosition();
                 Result result = mDataList.get(position);
-                PicsActivity.start(mContext, position, result.getUrl(),mDataList);
+                PicActivity.start(mContext, position, result.getUrl(),mDataList);
             }
         });
         return holder;

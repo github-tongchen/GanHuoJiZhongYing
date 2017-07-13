@@ -1,12 +1,14 @@
 <resources>
     <string name="app_name">干货集中营</string>
 
-    <string name="tv_desc">TextView占位描述TextView占位描述TextView占位描述</string>
-    <string name="tv_date">2017-06-06</string>
     <string name="tv_tip">点击或上滑加载更多内容</string>
     <string name="tv_tip_loading">正在加载更多内容···</string>
+    <!--nav_menu-->
+    <string name="menu_user">个 人 信 息</string>
+    <string name="menu_favorite">我 的 收 藏</string>
+    <string name="menu_skin">多 彩 皮 肤</string>
+    <string name="menu_app">更 多 应 用</string>
+    <string name="menu_feedback">用 户 反 馈</string>
+    <string name="menu_about">关 于 干 货</string>
 
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

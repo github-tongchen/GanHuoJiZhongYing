@@ -4,15 +4,26 @@
     <color name="colorPrimaryDark">#39a69a</color>
     <color name="colorAccent">#FF4081</color>
 
+    <!--Toolbar-->
+    <color name="toolbar_bg">@color/colorPrimary</color>
+    <color name="toolbar_text">#ffffff</color>
+
+    <!--FloatingActionButton的背景色-->
+    <color name="fab">@color/colorPrimary</color>
+
+    <!--侧滑菜单的颜色-->
+    <color name="nav_header">@color/colorPrimary</color>
+    <color name="nav_menu">#838282</color>
+
     <!--TabLayout的颜色-->
-    <color name="tab_indicator">#ffffff</color>
-    <color name="tab_select_text">#ffffff</color>
-    <color name="tab_text">#78ffffff</color>
+    <color name="tab_select">#ffffff</color>
+    <color name="tab_unselect">#78ffffff</color>
 
-    <color name="fragment_news">#c1c1c1</color>
+    <!--Fragment的背景色-->
+    <color name="fragment_bg">#c1c1c1</color>
 
-    <color name="item_news">#32ffffff</color>
-
-    <color name="item_news_footer">#98f7ec</color>
+    <!--TextFragment的子item背景色和footer背景色-->
+    <color name="item_text">#32c1c1c1</color>
+    <color name="item_text_footer">#98f7ec</color>
 
 </resources>

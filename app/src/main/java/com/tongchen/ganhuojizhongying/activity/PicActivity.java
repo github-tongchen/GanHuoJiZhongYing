@@ -13,14 +13,14 @@ import com.tongchen.ganhuojizhongying.gson.Result;
 import java.io.Serializable;
 import java.util.List;
 
-public class PicsActivity extends AppCompatActivity {
+public class PicActivity extends AppCompatActivity {
 
     private int mIndex;
     private String mUrl;
     private List<Result> mDatas;
 
     public static void start(Context context, int index, String url, List<Result> datas) {
-        Intent intent = new Intent(context, PicsActivity.class);
+        Intent intent = new Intent(context, PicActivity.class);
         intent.putExtra("index", index);
         intent.putExtra("url", url);
         intent.putExtra("datas", (Serializable) datas);
@@ -30,7 +30,7 @@ public class PicsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pics);
+        setContentView(R.layout.activity_pic);
         mIndex = getIntent().getIntExtra("index", -1);
         mUrl = getIntent().getStringExtra("url");
         mDatas = (List<Result>) (getIntent().getSerializableExtra("datas"));
@@ -41,13 +41,13 @@ public class PicsActivity extends AppCompatActivity {
     private void findViews() {
         ViewPager ImgVp = (ViewPager) findViewById(R.id.view_pager);
 
-        PicPagerAdapter picPagerAdapter = new PicPagerAdapter(PicsActivity.this, mDatas);
+        PicPagerAdapter picPagerAdapter = new PicPagerAdapter(PicActivity.this, mDatas);
         ImgVp.setAdapter(picPagerAdapter);
         ImgVp.setOffscreenPageLimit(1);
         ImgVp.setCurrentItem(mIndex);
 
         //if (!TextUtils.isEmpty(mUrl)) {
-        // Glide.with(PicsActivity.this).load(mIndex).into(imageView);
+        // Glide.with(PicActivity.this).load(mIndex).into(imageView);
         //}
     }
 }

@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent"
-    android:orientation="vertical"
-    tools:context="com.tongchen.ganhuojizhongying.activity.TextsActivity">
+    tools:context="com.tongchen.ganhuojizhongying.activity.TextActivity"
+    android:orientation="vertical">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"

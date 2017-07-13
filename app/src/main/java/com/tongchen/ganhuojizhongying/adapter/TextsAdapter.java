@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.tongchen.ganhuojizhongying.R;
-import com.tongchen.ganhuojizhongying.activity.TextsActivity;
+import com.tongchen.ganhuojizhongying.activity.TextActivity;
 import com.tongchen.ganhuojizhongying.constant.LoadingType;
 import com.tongchen.ganhuojizhongying.constant.Url;
 import com.tongchen.ganhuojizhongying.gson.Result;
@@ -70,7 +70,7 @@ public class TextsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             mContext = parent.getContext();
         }
         if (viewType == TYPE_ITEM) {
-            View view = LayoutInflater.from(mContext).inflate(R.layout.view_item_texts, parent, false);
+            View view = LayoutInflater.from(mContext).inflate(R.layout.view_item_text, parent, false);
             final ItemViewHolder itemViewHolder = new ItemViewHolder(view);
 
             itemViewHolder.cardView.setOnClickListener(new View.OnClickListener() {
@@ -78,13 +78,13 @@ public class TextsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                 public void onClick(View v) {
                     int position = itemViewHolder.getAdapterPosition();
                     Result result = mDataList.get(position);
-                    TextsActivity.start(mContext, result.getUrl());
+                    TextActivity.start(mContext, result.getUrl());
                 }
             });
             return itemViewHolder;
 
         } else if (viewType == TYPE_FOOTER) {
-            View view = LayoutInflater.from(mContext).inflate(R.layout.view_item_texts_footer, parent, false);
+            View view = LayoutInflater.from(mContext).inflate(R.layout.view_item_text_footer, parent, false);
             final FootViewHolder footViewHolder = new FootViewHolder(view);
 
             footViewHolder.rLyt.setOnClickListener(new View.OnClickListener() {

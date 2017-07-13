@@ -21,8 +21,8 @@ import android.widget.Toast;
 import com.tongchen.ganhuojizhongying.R;
 import com.tongchen.ganhuojizhongying.adapter.FragmentAdapter;
 import com.tongchen.ganhuojizhongying.constant.Category;
-import com.tongchen.ganhuojizhongying.fragment.PicsFragment;
-import com.tongchen.ganhuojizhongying.fragment.TextsFragment;
+import com.tongchen.ganhuojizhongying.fragment.PicFragment;
+import com.tongchen.ganhuojizhongying.fragment.TextFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -72,11 +72,11 @@ public class MainActivity extends SkinBaseActivity implements View.OnClickListen
     private void initViews() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        dynamicAddView(toolbar, "background", R.color.colorPrimary);
+        dynamicAddView(toolbar, "background", R.color.toolbar_bg);
 
         tabLyt = (TabLayout) findViewById(R.id.tabLyt);
         //  使TabLayout的指示器支持换肤
-        dynamicAddView(tabLyt, "tabLayoutIndicator", R.color.tab_indicator);
+        dynamicAddView(tabLyt, "tabLayoutIndicator", R.color.tab_select);
 
         viewpager = (ViewPager) findViewById(R.id.viewpager);
 
@@ -107,10 +107,10 @@ public class MainActivity extends SkinBaseActivity implements View.OnClickListen
         int i = 0;
         while (i < mTitles.size()) {
             if (i == mTitles.size() - 1) {
-                PicsFragment fragment = PicsFragment.newInstance(mTitles.get(i));
+                PicFragment fragment = PicFragment.newInstance(mTitles.get(i));
                 mFragments.add(fragment);
             } else {
-                TextsFragment fragment = TextsFragment.newInstance(mTitles.get(i));
+                TextFragment fragment = TextFragment.newInstance(mTitles.get(i));
                 mFragments.add(fragment);
             }
             i++;
@@ -126,9 +126,9 @@ public class MainActivity extends SkinBaseActivity implements View.OnClickListen
             case R.id.fab:
                 int index = viewpager.getCurrentItem();
                 if (index < mTitles.size() - 1) {
-                    ((TextsFragment) mFragments.get(index)).back2Top();
+                    ((TextFragment) mFragments.get(index)).back2Top();
                 } else {
-                    ((PicsFragment) mFragments.get(index)).back2Top();
+                    ((PicFragment) mFragments.get(index)).back2Top();
                 }
                 break;
         }

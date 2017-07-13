@@ -26,8 +26,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 app:tabMode="scrollable"
-                app:tabSelectedTextColor="@color/tab_select_text"
-                app:tabTextColor="@color/tab_text" />
+                app:tabSelectedTextColor="@color/tab_select"
+                app:tabTextColor="@color/tab_unselect" />
 
         </android.support.design.widget.AppBarLayout>
 
@@ -43,10 +43,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|right"
             android:layout_margin="16dp"
-            android:src="@drawable/ic_back_top"
+            android:src="@drawable/ic_arrow_top"
             app:backgroundTint="@color/colorPrimary"
-            app:layout_behavior="com.tongchen.ganhuojizhongying.util.ScrollAwareFABBehavior"
-            app:elevation="5dp" />
+            app:elevation="5dp"
+            app:layout_behavior="com.tongchen.ganhuojizhongying.behavior.ScrollAwareFABBehavior" />
 
     </android.support.design.widget.CoordinatorLayout>
 
@@ -54,7 +54,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        app:headerLayout="@layout/nav_header"
-        app:menu="@menu/nav_menu" />
+        app:headerLayout="@layout/view_nav_header"
+        app:menu="@menu/nav_menu"/>
 
 </android.support.v4.widget.DrawerLayout>
