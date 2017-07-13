@@ -2,6 +2,8 @@ package com.tongchen.ganhuojizhongying;
 
 import com.tongchen.ganhuojizhongying.attr.TabLayoutIndicatorAttr;
 
+import org.litepal.LitePal;
+
 import solid.ren.skinlibrary.SkinConfig;
 import solid.ren.skinlibrary.base.SkinBaseApplication;
 
@@ -19,6 +21,8 @@ public class GanHuoApp extends SkinBaseApplication {
     public void onCreate() {
         super.onCreate();
         instance = this;
+        //  初始化LitePal
+        LitePal.initialize(this);
 
         //  使TabLayout的指示器支持换肤
         SkinConfig.addSupportAttr("tabLayoutIndicator", new TabLayoutIndicatorAttr());

@@ -1,10 +1,13 @@
 package com.tongchen.ganhuojizhongying.activity;
 
 import android.Manifest;
+import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
@@ -29,7 +32,7 @@ import java.util.List;
 
 import solid.ren.skinlibrary.base.SkinBaseActivity;
 
-public class MainActivity extends SkinBaseActivity implements View.OnClickListener {
+public class MainActivity extends SkinBaseActivity implements View.OnClickListener,NavigationView.OnNavigationItemSelectedListener {
 
     private List<String> mTitles = new ArrayList<>();
 
@@ -41,6 +44,11 @@ public class MainActivity extends SkinBaseActivity implements View.OnClickListen
     private FragmentAdapter mAdapter;
 
     private String[] mTitleArray = {"全部", "Android", "iOS", "前端", "拓展资源", "休息视频", "瞎推荐", "App", "福利", "天狗"};
+
+    public static void start(Context context) {
+        Intent intent = new Intent(context, MainActivity.class);
+        context.startActivity(intent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,6 +97,9 @@ public class MainActivity extends SkinBaseActivity implements View.OnClickListen
 
         FloatingActionButton fltBtn = (FloatingActionButton) findViewById(R.id.fab);
         fltBtn.setOnClickListener(this);
+
+        NavigationView navigationView=(NavigationView) findViewById(R.id.navigation_view);
+        navigationView.setNavigationItemSelectedListener(this);
     }
 
     private void initCategories() {
@@ -143,5 +154,26 @@ public class MainActivity extends SkinBaseActivity implements View.OnClickListen
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.nav_menu_user:
+                break;
+            case R.id.nav_menu_favorite:
+                break;
+            case R.id.nav_menu_skin:
+                SkinActivity.start(this);
+                break;
+            case R.id.nav_menu_app:
+                break;
+            case R.id.nav_menu_feedback:
+                break;
+            case R.id.nav_menu_about:
+                break;
+        }
+        //drawerLayout.closeDrawers();
+        return true;
     }
 }

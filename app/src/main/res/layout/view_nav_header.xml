@@ -12,6 +12,7 @@
         android:layout_height="100dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
+        android:src="@drawable/ic_user"
         app:civ_border_color="@android:color/white"
         app:civ_border_overlay="true"
         app:civ_border_width="3dp" />
@@ -21,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:text="839706407@qq.com"
+        android:text="83xxxx407@qq.com"
         android:textColor="#FFF"
         android:textSize="14sp" />
 
@@ -30,7 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@id/tv_email"
-        android:text="TongChen"
+        android:text="干货集中营"
         android:textColor="#FFF"
         android:textSize="14sp" />
 
