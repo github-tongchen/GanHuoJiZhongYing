@@ -3,11 +3,12 @@ package com.tongchen.ganhuojizhongying.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
 import com.tongchen.ganhuojizhongying.R;
 
-public class GuideActivity extends AppCompatActivity {
+import solid.ren.skinlibrary.base.SkinBaseActivity;
+
+public class GuideActivity extends SkinBaseActivity {
 
     public static void start(Context context) {
         Intent intent = new Intent(context, GuideActivity.class);

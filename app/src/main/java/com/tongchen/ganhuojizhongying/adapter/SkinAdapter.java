@@ -2,11 +2,14 @@ package com.tongchen.ganhuojizhongying.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.tongchen.ganhuojizhongying.R;
@@ -15,6 +18,10 @@ import com.tongchen.ganhuojizhongying.model.SkinModel;
 import org.litepal.util.LogUtil;
 
 import java.util.List;
+
+import solid.ren.skinlibrary.SkinConfig;
+import solid.ren.skinlibrary.SkinLoaderListener;
+import solid.ren.skinlibrary.loader.SkinManager;
 
 /**
  * Created by TongChen on 2017/7/13.
@@ -26,6 +33,7 @@ public class SkinAdapter extends RecyclerView.Adapter<SkinAdapter.ViewHolder> {
 
     private Context mContext;
     private List<SkinModel> mDataList;
+    private int mHeight, mWidth;
 
     static class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -41,8 +49,10 @@ public class SkinAdapter extends RecyclerView.Adapter<SkinAdapter.ViewHolder> {
         }
     }
 
-    public SkinAdapter(List<SkinModel> dataList) {
+    public SkinAdapter(List<SkinModel> dataList, int width, int height) {
         this.mDataList = dataList;
+        mWidth = width;
+        mHeight = height;
     }
 
     @Override
@@ -51,12 +61,43 @@ public class SkinAdapter extends RecyclerView.Adapter<SkinAdapter.ViewHolder> {
             mContext = parent.getContext();
         }
         View view = LayoutInflater.from(mContext).inflate(R.layout.view_item_skin, parent, false);
-        ViewHolder holder = new ViewHolder(view);
+        final ViewHolder holder = new ViewHolder(view);
 
         holder.previewIv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int position = holder.getAdapterPosition();
+                String skinName = mDataList.get(position).getSkinName();
+                if (TextUtils.equals(skinName, "default")) {
+                    if (!SkinConfig.isDefaultSkin(mContext)) {
+                        SkinManager.getInstance().restoreDefaultTheme();
+                    }
+                }else {
+                    SkinManager.getInstance().loadSkin(skinName, new SkinLoaderListener() {
+                                @Override
+                                public void onStart() {
+                                    Toast.makeText(mContext, "正在切换中", Toast.LENGTH_SHORT).show();
+                                }
 
+                                @Override
+                                public void onProgress(int progress) {
+
+                                }
+
+                                @Override
+                                public void onSuccess() {
+                                    Toast.makeText(mContext, "切换成功", Toast.LENGTH_SHORT).show();
+                                }
+
+                                @Override
+                                public void onFailed(String errMsg) {
+                                    Log.d("onFailed",errMsg);
+                                    Toast.makeText(mContext, "切换失败", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+
+                    );
+                }
             }
         });
 
@@ -66,9 +107,12 @@ public class SkinAdapter extends RecyclerView.Adapter<SkinAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         SkinModel skinModel = mDataList.get(position);
-        LogUtil.d("skinModel",skinModel.getName());
+        LogUtil.d("skinModel", skinModel.getName());
 
-        Glide.with(mContext).load(skinModel.getImgId()).into(holder.previewIv);
+        Glide.with(mContext)
+                .load(skinModel.getImgId())
+                .override(mWidth, mHeight)
+                .into(holder.previewIv);
         if (skinModel.isUsed()) {
             holder.checkedIv.setVisibility(View.VISIBLE);
         } else {

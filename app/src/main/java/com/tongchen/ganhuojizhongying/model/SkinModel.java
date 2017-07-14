@@ -13,6 +13,7 @@ public class SkinModel extends DataSupport {
     private String name;
     private int imgId;
     private boolean used;
+    private String skinName;
 
     public String getName() {
         return name;
@@ -40,5 +41,13 @@ public class SkinModel extends DataSupport {
         } else {
             this.used = false;
         }
+    }
+
+    public String getSkinName() {
+        return skinName;
+    }
+
+    public void setSkinName(String skinName) {
+        this.skinName = skinName;
     }
 }

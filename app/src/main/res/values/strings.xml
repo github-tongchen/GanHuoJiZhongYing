@@ -11,5 +11,8 @@
     <string name="menu_feedback">用 户 反 馈</string>
     <string name="menu_about">关 于 干 货</string>
 
-    <string name="skin_mint_green">薄荷绿</string>
+    <string name="skin_bohelv">薄荷绿</string>
+    <string name="skin_furonghong">芙蓉红</string>
+    <string name="skin_bingxuelan">冰雪蓝</string>
+    <string name="skin_ganlanlv">橄榄绿</string>
 </resources>

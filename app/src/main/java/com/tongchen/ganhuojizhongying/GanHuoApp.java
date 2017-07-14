@@ -1,6 +1,6 @@
 package com.tongchen.ganhuojizhongying;
 
-import com.tongchen.ganhuojizhongying.attr.TabLayoutIndicatorAttr;
+import com.tongchen.ganhuojizhongying.attr.FloatingActionButtonAttr;
 
 import org.litepal.LitePal;
 
@@ -24,8 +24,10 @@ public class GanHuoApp extends SkinBaseApplication {
         //  初始化LitePal
         LitePal.initialize(this);
 
-        //  使TabLayout的指示器支持换肤
-        SkinConfig.addSupportAttr("tabLayoutIndicator", new TabLayoutIndicatorAttr());
+
+        SkinConfig.setCanChangeStatusColor(true);
+        //  使FloatingActionButton支持换肤
+        SkinConfig.addSupportAttr("floatingActionButtonBackgroundTint", new FloatingActionButtonAttr());
     }
 
     public static GanHuoApp getInstance() {

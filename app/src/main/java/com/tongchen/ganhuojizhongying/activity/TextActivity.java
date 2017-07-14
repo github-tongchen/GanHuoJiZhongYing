@@ -3,12 +3,14 @@ package com.tongchen.ganhuojizhongying.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.webkit.WebView;
 
 import com.tongchen.ganhuojizhongying.R;
 
-public class TextActivity extends AppCompatActivity {
+import solid.ren.skinlibrary.base.SkinBaseActivity;
+
+public class TextActivity extends SkinBaseActivity {
 
     private WebView webView;
 
@@ -30,6 +32,11 @@ public class TextActivity extends AppCompatActivity {
     }
 
     private void initViews(final String url) {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        dynamicAddView(toolbar, "background", R.color.toolbar_bg);
+
         webView = (WebView) findViewById(R.id.web_view);
         webView.getSettings().setJavaScriptEnabled(true);
        /* if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {

@@ -3,7 +3,6 @@ package com.tongchen.ganhuojizhongying.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
-import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -28,8 +27,9 @@ import java.util.List;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
+import solid.ren.skinlibrary.base.SkinBaseFragment;
 
-public class PicFragment extends Fragment {
+public class PicFragment extends SkinBaseFragment {
 
     private static final String ARG_TITLE = "title";
     //  当前所处Tab的分类

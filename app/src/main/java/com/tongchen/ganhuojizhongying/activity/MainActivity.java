@@ -80,12 +80,10 @@ public class MainActivity extends SkinBaseActivity implements View.OnClickListen
     private void initViews() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         dynamicAddView(toolbar, "background", R.color.toolbar_bg);
 
         tabLyt = (TabLayout) findViewById(R.id.tabLyt);
-        //  使TabLayout的指示器支持换肤
-        dynamicAddView(tabLyt, "tabLayoutIndicator", R.color.tab_select);
-
         viewpager = (ViewPager) findViewById(R.id.viewpager);
 
         ActionBar actionBar = getSupportActionBar();
@@ -97,6 +95,7 @@ public class MainActivity extends SkinBaseActivity implements View.OnClickListen
 
         FloatingActionButton fltBtn = (FloatingActionButton) findViewById(R.id.fab);
         fltBtn.setOnClickListener(this);
+        dynamicAddView(fltBtn, "floatingActionButtonBackgroundTint", R.color.colorPrimary);
 
         NavigationView navigationView=(NavigationView) findViewById(R.id.navigation_view);
         navigationView.setNavigationItemSelectedListener(this);

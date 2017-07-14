@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 
 import com.tongchen.ganhuojizhongying.R;
 import com.tongchen.ganhuojizhongying.adapter.PicPagerAdapter;
@@ -13,7 +12,9 @@ import com.tongchen.ganhuojizhongying.gson.Result;
 import java.io.Serializable;
 import java.util.List;
 
-public class PicActivity extends AppCompatActivity {
+import solid.ren.skinlibrary.base.SkinBaseActivity;
+
+public class PicActivity extends SkinBaseActivity {
 
     private int mIndex;
     private String mUrl;
