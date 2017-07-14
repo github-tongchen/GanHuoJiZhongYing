@@ -12,7 +12,7 @@ public class SkinModel extends DataSupport {
 
     private String name;
     private int imgId;
-    private boolean used;
+    private int used;
     private String skinName;
 
     public String getName() {
@@ -31,16 +31,12 @@ public class SkinModel extends DataSupport {
         this.imgId = imgId;
     }
 
-    public boolean isUsed() {
+    public int isUsed() {
         return used;
     }
 
     public void setUsed(int used) {
-        if (used == 1) {
-            this.used = true;
-        } else {
-            this.used = false;
-        }
+            this.used = used;
     }
 
     public String getSkinName() {

@@ -66,13 +66,20 @@ public class SkinAdapter extends RecyclerView.Adapter<SkinAdapter.ViewHolder> {
         holder.previewIv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int position = holder.getAdapterPosition();
-                String skinName = mDataList.get(position).getSkinName();
+                final int position = holder.getAdapterPosition();
+                final String skinName = mDataList.get(position).getSkinName();
                 if (TextUtils.equals(skinName, "default")) {
                     if (!SkinConfig.isDefaultSkin(mContext)) {
                         SkinManager.getInstance().restoreDefaultTheme();
+                        SkinModel skinModel = new SkinModel();
+                        skinModel.setToDefault("used");
+                        skinModel.updateAll("used=?","1");
+
+                        SkinModel skinModel1 = new SkinModel();
+                        skinModel1.setUsed(1);
+                        skinModel1.updateAll("skinName=?", skinName);
                     }
-                }else {
+                } else {
                     SkinManager.getInstance().loadSkin(skinName, new SkinLoaderListener() {
                                 @Override
                                 public void onStart() {
@@ -87,11 +94,19 @@ public class SkinAdapter extends RecyclerView.Adapter<SkinAdapter.ViewHolder> {
                                 @Override
                                 public void onSuccess() {
                                     Toast.makeText(mContext, "切换成功", Toast.LENGTH_SHORT).show();
+                                    SkinModel skinModel = new SkinModel();
+                                    skinModel.setToDefault("used");
+                                    skinModel.updateAll("used=?","1");
+
+                                    SkinModel skinModel1 = new SkinModel();
+                                    skinModel1.setUsed(1);
+                                    skinModel1.updateAll("skinName=?", skinName);
+
                                 }
 
                                 @Override
                                 public void onFailed(String errMsg) {
-                                    Log.d("onFailed",errMsg);
+                                    Log.d("onFailed", errMsg);
                                     Toast.makeText(mContext, "切换失败", Toast.LENGTH_SHORT).show();
                                 }
                             }
@@ -113,7 +128,7 @@ public class SkinAdapter extends RecyclerView.Adapter<SkinAdapter.ViewHolder> {
                 .load(skinModel.getImgId())
                 .override(mWidth, mHeight)
                 .into(holder.previewIv);
-        if (skinModel.isUsed()) {
+        if (skinModel.isUsed() == 1) {
             holder.checkedIv.setVisibility(View.VISIBLE);
         } else {
             holder.checkedIv.setVisibility(View.INVISIBLE);

@@ -39,8 +39,8 @@ public class SkinActivity extends SkinBaseActivity {
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
-        //  屏幕宽度减去4个间距的宽度再除以3即为3个预览图的平均宽度
-        int width = (ScreenUtil.getDisplayWidth(this) - ScreenUtil.dip2px(30) * 4) / 3;
+        //  屏幕宽度减去6个间距(左右最2侧算一个间距，每2个预览图之间算2个间距)的宽度再除以3即为3个预览图的平均宽度
+        int width = (ScreenUtil.getDisplayWidth(this) - ScreenUtil.dip2px(20) * 6) / 3;
         //  截图的长宽比为1920:1080，宽度乘以比例即可得出高度
         int height = width * 1920 / 1080;
 
