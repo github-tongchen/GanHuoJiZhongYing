@@ -26,7 +26,7 @@
             android:theme="@style/FullScreenTheme" />
         <activity android:name=".activity.SkinActivity" />
         <activity android:name=".activity.MainActivity" />
-        <activity android:name=".activity.GuideActivity"></activity>
+        <activity android:name=".activity.GuideActivity" />
     </application>
 
 </manifest>

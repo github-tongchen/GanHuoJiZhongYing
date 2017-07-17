@@ -11,7 +11,7 @@ import solid.ren.skinlibrary.utils.SkinResourcesUtils;
  * Created by TongChen on 2017/6/2.
  * <p>
  * Description:换肤开源库默认支持 textColor 和 background 的换肤，其他属性进行换肤需要自定义属性，
- * 此处在需要换肤时TabLayout的指示器颜色也跟着变化，因此需要自定义
+ * 此处在需要换肤时FloatingActionButton的背景颜色也跟着变化，因此需要自定义
  */
 
 public class FloatingActionButtonAttr extends SkinAttr {

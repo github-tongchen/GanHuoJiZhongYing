@@ -17,6 +17,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -32,7 +33,7 @@ import java.util.List;
 
 import solid.ren.skinlibrary.base.SkinBaseActivity;
 
-public class MainActivity extends SkinBaseActivity implements View.OnClickListener,NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends SkinBaseActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
 
     private List<String> mTitles = new ArrayList<>();
 
@@ -97,8 +98,10 @@ public class MainActivity extends SkinBaseActivity implements View.OnClickListen
         fltBtn.setOnClickListener(this);
         dynamicAddView(fltBtn, "floatingActionButtonBackgroundTint", R.color.colorPrimary);
 
-        NavigationView navigationView=(NavigationView) findViewById(R.id.navigation_view);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        dynamicAddView(navigationView, "navigationViewChecked", R.color.colorPrimary);
     }
 
     private void initCategories() {
@@ -172,7 +175,16 @@ public class MainActivity extends SkinBaseActivity implements View.OnClickListen
             case R.id.nav_menu_about:
                 break;
         }
-        //drawerLayout.closeDrawers();
+        drawerLayout.closeDrawers();
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(Gravity.START)) {
+            drawerLayout.closeDrawers();
+        } else {
+            super.onBackPressed();
+        }
     }
 }

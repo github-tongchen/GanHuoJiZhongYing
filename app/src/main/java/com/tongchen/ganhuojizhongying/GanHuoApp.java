@@ -1,6 +1,8 @@
 package com.tongchen.ganhuojizhongying;
 
 import com.tongchen.ganhuojizhongying.attr.FloatingActionButtonAttr;
+import com.tongchen.ganhuojizhongying.attr.NavigationViewAttr;
+import com.tongchen.ganhuojizhongying.attr.SwipeRefreshLayoutAttr;
 
 import org.litepal.LitePal;
 
@@ -28,6 +30,10 @@ public class GanHuoApp extends SkinBaseApplication {
         SkinConfig.setCanChangeStatusColor(true);
         //  使FloatingActionButton支持换肤
         SkinConfig.addSupportAttr("floatingActionButtonBackgroundTint", new FloatingActionButtonAttr());
+        //  使SwipeRefreshLayout支持换肤
+        SkinConfig.addSupportAttr("swipeRefreshLayoutSchemeResources", new SwipeRefreshLayoutAttr());
+        //  使NavigationView的MenuItem支持换肤
+        SkinConfig.addSupportAttr("navigationViewChecked", new NavigationViewAttr());
     }
 
     public static GanHuoApp getInstance() {

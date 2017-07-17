@@ -1,6 +1,7 @@
 package com.tongchen.ganhuojizhongying.adapter;
 
 import android.content.Context;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
@@ -9,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.tongchen.ganhuojizhongying.R;
@@ -71,9 +71,10 @@ public class SkinAdapter extends RecyclerView.Adapter<SkinAdapter.ViewHolder> {
                 if (TextUtils.equals(skinName, "default")) {
                     if (!SkinConfig.isDefaultSkin(mContext)) {
                         SkinManager.getInstance().restoreDefaultTheme();
+                        Snackbar.make(holder.previewIv, "恢复默认皮肤成功", Snackbar.LENGTH_SHORT).show();
                         SkinModel skinModel = new SkinModel();
                         skinModel.setToDefault("used");
-                        skinModel.updateAll("used=?","1");
+                        skinModel.updateAll("used=?", "1");
 
                         SkinModel skinModel1 = new SkinModel();
                         skinModel1.setUsed(1);
@@ -83,7 +84,7 @@ public class SkinAdapter extends RecyclerView.Adapter<SkinAdapter.ViewHolder> {
                     SkinManager.getInstance().loadSkin(skinName, new SkinLoaderListener() {
                                 @Override
                                 public void onStart() {
-                                    Toast.makeText(mContext, "正在切换中", Toast.LENGTH_SHORT).show();
+                                    //Snackbar.make(holder.previewIv, "正在切换中", Snackbar.LENGTH_SHORT).show();
                                 }
 
                                 @Override
@@ -93,10 +94,10 @@ public class SkinAdapter extends RecyclerView.Adapter<SkinAdapter.ViewHolder> {
 
                                 @Override
                                 public void onSuccess() {
-                                    Toast.makeText(mContext, "切换成功", Toast.LENGTH_SHORT).show();
+                                    Snackbar.make(holder.previewIv, "切换成功", Snackbar.LENGTH_SHORT).show();
                                     SkinModel skinModel = new SkinModel();
                                     skinModel.setToDefault("used");
-                                    skinModel.updateAll("used=?","1");
+                                    skinModel.updateAll("used=?", "1");
 
                                     SkinModel skinModel1 = new SkinModel();
                                     skinModel1.setUsed(1);
@@ -107,7 +108,7 @@ public class SkinAdapter extends RecyclerView.Adapter<SkinAdapter.ViewHolder> {
                                 @Override
                                 public void onFailed(String errMsg) {
                                     Log.d("onFailed", errMsg);
-                                    Toast.makeText(mContext, "切换失败", Toast.LENGTH_SHORT).show();
+                                    Snackbar.make(holder.previewIv, "切换失败", Snackbar.LENGTH_SHORT).show();
                                 }
                             }
 

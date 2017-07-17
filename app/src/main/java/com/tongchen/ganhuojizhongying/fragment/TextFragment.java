@@ -85,8 +85,9 @@ public class TextFragment extends SkinBaseFragment {
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh_lyt);
 
         swipeRefreshLayout.setProgressBackgroundColorSchemeResource(android.R.color.white);
-        swipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_light, android.R.color.holo_red_light,
-                android.R.color.holo_orange_light, android.R.color.holo_green_light);
+        //swipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary);
+        dynamicAddView(swipeRefreshLayout,"swipeRefreshLayoutSchemeResources",R.color.colorPrimary);
+
         swipeRefreshLayout.setProgressViewOffset(false, 0, (int) TypedValue.applyDimension(
                 TypedValue.COMPLEX_UNIT_DIP, 24, getResources().getDisplayMetrics()));
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {

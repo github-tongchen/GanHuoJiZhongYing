@@ -7,6 +7,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
 
 import com.tongchen.ganhuojizhongying.R;
 import com.tongchen.ganhuojizhongying.ScreenUtil;
@@ -34,8 +35,16 @@ public class SkinActivity extends SkinBaseActivity {
 
     private void findViews() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle(R.string.skin_title);
         setSupportActionBar(toolbar);
         dynamicAddView(toolbar, "background", R.color.toolbar_bg);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
