@@ -16,4 +16,6 @@
     <string name="skin_furonghong">芙蓉红</string>
     <string name="skin_bingxuelan">冰雪蓝</string>
     <string name="skin_ganlanlv">橄榄绿</string>
+
+    <string name="sys_exit">再按一次退出程序</string>
 </resources>

@@ -17,6 +17,7 @@ import com.tongchen.ganhuojizhongying.model.SkinModel;
 
 import org.litepal.util.LogUtil;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import solid.ren.skinlibrary.SkinConfig;
@@ -34,6 +35,7 @@ public class SkinAdapter extends RecyclerView.Adapter<SkinAdapter.ViewHolder> {
     private Context mContext;
     private List<SkinModel> mDataList;
     private int mHeight, mWidth;
+    private List<ViewHolder> holderList = new ArrayList<>();
 
     static class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -67,56 +69,11 @@ public class SkinAdapter extends RecyclerView.Adapter<SkinAdapter.ViewHolder> {
             @Override
             public void onClick(View v) {
                 final int position = holder.getAdapterPosition();
-                final String skinName = mDataList.get(position).getSkinName();
-                if (TextUtils.equals(skinName, "default")) {
-                    if (!SkinConfig.isDefaultSkin(mContext)) {
-                        SkinManager.getInstance().restoreDefaultTheme();
-                        Snackbar.make(holder.previewIv, "恢复默认皮肤成功", Snackbar.LENGTH_SHORT).show();
-                        SkinModel skinModel = new SkinModel();
-                        skinModel.setToDefault("used");
-                        skinModel.updateAll("used=?", "1");
-
-                        SkinModel skinModel1 = new SkinModel();
-                        skinModel1.setUsed(1);
-                        skinModel1.updateAll("skinName=?", skinName);
-                    }
-                } else {
-                    SkinManager.getInstance().loadSkin(skinName, new SkinLoaderListener() {
-                                @Override
-                                public void onStart() {
-                                    //Snackbar.make(holder.previewIv, "正在切换中", Snackbar.LENGTH_SHORT).show();
-                                }
-
-                                @Override
-                                public void onProgress(int progress) {
-
-                                }
-
-                                @Override
-                                public void onSuccess() {
-                                    Snackbar.make(holder.previewIv, "切换成功", Snackbar.LENGTH_SHORT).show();
-                                    SkinModel skinModel = new SkinModel();
-                                    skinModel.setToDefault("used");
-                                    skinModel.updateAll("used=?", "1");
-
-                                    SkinModel skinModel1 = new SkinModel();
-                                    skinModel1.setUsed(1);
-                                    skinModel1.updateAll("skinName=?", skinName);
-
-                                }
-
-                                @Override
-                                public void onFailed(String errMsg) {
-                                    Log.d("onFailed", errMsg);
-                                    Snackbar.make(holder.previewIv, "切换失败", Snackbar.LENGTH_SHORT).show();
-                                }
-                            }
-
-                    );
-                }
+                changeSkin(position, v);
             }
         });
 
+        holderList.add(holder);
         return holder;
     }
 
@@ -140,5 +97,67 @@ public class SkinAdapter extends RecyclerView.Adapter<SkinAdapter.ViewHolder> {
     @Override
     public int getItemCount() {
         return mDataList.size();
+    }
+
+
+    private void changeSkin(final int position, final View view) {
+        SkinModel skinModel = mDataList.get(position);
+        final String skinName = skinModel.getSkinName();
+
+        if (TextUtils.equals(skinName, "default")) {
+            if (!SkinConfig.isDefaultSkin(mContext)) {
+                SkinManager.getInstance().restoreDefaultTheme();
+                Snackbar.make(view, "已恢复默认皮肤", Snackbar.LENGTH_SHORT).show();
+
+                resetCheck(position);
+                updateSkinTable(skinName);
+            }
+        } else {
+            SkinManager.getInstance().loadSkin(skinName, new SkinLoaderListener() {
+                        @Override
+                        public void onStart() {
+                        }
+
+                        @Override
+                        public void onProgress(int progress) {
+                        }
+
+                        @Override
+                        public void onSuccess() {
+                            Snackbar.make(view, "切换成功", Snackbar.LENGTH_SHORT).show();
+
+                            resetCheck(position);
+                            updateSkinTable(skinName);
+                        }
+
+                        @Override
+                        public void onFailed(String errMsg) {
+                            Log.d("onFailed", errMsg);
+                            Snackbar.make(view, "切换失败", Snackbar.LENGTH_SHORT).show();
+                        }
+                    }
+
+            );
+        }
+    }
+
+    private void resetCheck(int position) {
+        for (int i = 0; i < holderList.size(); i++) {
+            if (i == position) {
+                holderList.get(i).checkedIv.setVisibility(View.VISIBLE);
+            } else {
+                holderList.get(i).checkedIv.setVisibility(View.INVISIBLE);
+            }
+        }
+    }
+
+    private void updateSkinTable(String skinName) {
+        SkinModel defaultSkin = new SkinModel();
+        defaultSkin.setToDefault("used");
+        defaultSkin.updateAll("used=?", "1");
+
+        SkinModel currentSkin = new SkinModel();
+        currentSkin.setUsed(1);
+        currentSkin.updateAll("skinName=?", skinName);
     }
 }

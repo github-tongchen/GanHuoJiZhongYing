@@ -43,6 +43,8 @@ public class MainActivity extends SkinBaseActivity implements View.OnClickListen
 
     private List<Fragment> mFragments = new ArrayList<>();
     private FragmentAdapter mAdapter;
+    //  点击2次返回才退出
+    private long firstTime = 0;
 
     private String[] mTitleArray = {"全部", "Android", "iOS", "前端", "拓展资源", "休息视频", "瞎推荐", "App", "福利", "天狗"};
 
@@ -130,6 +132,7 @@ public class MainActivity extends SkinBaseActivity implements View.OnClickListen
         }
         mAdapter = new FragmentAdapter(getSupportFragmentManager(), MainActivity.this, mFragments, mTitles);
         viewpager.setAdapter(mAdapter);
+        viewpager.setOffscreenPageLimit(7);
         tabLyt.setupWithViewPager(viewpager);
     }
 
@@ -160,6 +163,30 @@ public class MainActivity extends SkinBaseActivity implements View.OnClickListen
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        drawerLayout.closeDrawers();
+        /*drawerLayout.addDrawerListener(new DrawerLayout.DrawerListener() {
+            @Override
+            public void onDrawerSlide(View drawerView, float slideOffset) {
+
+            }
+
+            @Override
+            public void onDrawerOpened(View drawerView) {
+
+            }
+
+            @Override
+            public void onDrawerClosed(View drawerView) {
+
+            }
+
+            @Override
+            public void onDrawerStateChanged(int newState) {
+
+            }
+        });*/
+
+
         switch (item.getItemId()) {
             case R.id.nav_menu_user:
                 break;
@@ -175,7 +202,6 @@ public class MainActivity extends SkinBaseActivity implements View.OnClickListen
             case R.id.nav_menu_about:
                 break;
         }
-        drawerLayout.closeDrawers();
         return true;
     }
 
@@ -184,7 +210,13 @@ public class MainActivity extends SkinBaseActivity implements View.OnClickListen
         if (drawerLayout.isDrawerOpen(Gravity.START)) {
             drawerLayout.closeDrawers();
         } else {
-            super.onBackPressed();
+            long secondTime = System.currentTimeMillis();
+            if (secondTime - firstTime < 2000) {
+                System.exit(0);
+            } else {
+                Toast.makeText(this, R.string.sys_exit, Toast.LENGTH_SHORT).show();
+                firstTime = System.currentTimeMillis();
+            }
         }
     }
 }
