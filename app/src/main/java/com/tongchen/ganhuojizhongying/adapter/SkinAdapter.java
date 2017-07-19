@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.tongchen.ganhuojizhongying.R;
 import com.tongchen.ganhuojizhongying.model.SkinModel;
+import com.tongchen.ganhuojizhongying.util.ResourceUtil;
 
 import org.litepal.util.LogUtil;
 
@@ -83,7 +84,7 @@ public class SkinAdapter extends RecyclerView.Adapter<SkinAdapter.ViewHolder> {
         LogUtil.d("skinModel", skinModel.getName());
 
         Glide.with(mContext)
-                .load(skinModel.getImgId())
+                .load(ResourceUtil.getResourceId(skinModel.getImgId(), "drawable", mContext))
                 .override(mWidth, mHeight)
                 .into(holder.previewIv);
         if (skinModel.isUsed() == 1) {
@@ -160,4 +161,5 @@ public class SkinAdapter extends RecyclerView.Adapter<SkinAdapter.ViewHolder> {
         currentSkin.setUsed(1);
         currentSkin.updateAll("skinName=?", skinName);
     }
+
 }

@@ -44,28 +44,28 @@ public class SplashActivity extends SkinBaseActivity {
 
     private void initDataBase() {
         SkinModel skinModel = new SkinModel();
-        skinModel.setImgId(R.drawable.skin_preview_bohelv);
+        skinModel.setImgId("skin_preview_bohelv");
         skinModel.setName(getString(R.string.skin_bohelv));
         skinModel.setSkinName("default");
         skinModel.setUsed(1);
         skinModel.save();
 
         SkinModel skinModel1 = new SkinModel();
-        skinModel1.setImgId(R.drawable.skin_preview_furonghong);
+        skinModel1.setImgId("skin_preview_furonghong");
         skinModel1.setName(getString(R.string.skin_furonghong));
         skinModel1.setSkinName("fu_rong_hong.skin");
         skinModel1.setUsed(0);
         skinModel1.save();
 
         SkinModel skinModel2 = new SkinModel();
-        skinModel2.setImgId(R.drawable.skin_preview_bingxuelan);
+        skinModel2.setImgId("skin_preview_bingxuelan");
         skinModel2.setName(getString(R.string.skin_bingxuelan));
         skinModel2.setSkinName("bing_xue_lan.skin");
         skinModel2.setUsed(0);
         skinModel2.save();
 
         SkinModel skinModel3 = new SkinModel();
-        skinModel3.setImgId(R.drawable.skin_preview_ganlanlv);
+        skinModel3.setImgId("skin_preview_ganlanlv");
         skinModel3.setName(getString(R.string.skin_ganlanlv));
         skinModel3.setSkinName("gan_lan_lv.skin");
         skinModel3.setUsed(0);

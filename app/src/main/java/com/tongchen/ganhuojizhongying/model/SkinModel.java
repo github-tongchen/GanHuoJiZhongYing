@@ -11,7 +11,7 @@ import org.litepal.crud.DataSupport;
 public class SkinModel extends DataSupport {
 
     private String name;
-    private int imgId;
+    private String imgId;
     private int used;
     private String skinName;
 
@@ -23,11 +23,11 @@ public class SkinModel extends DataSupport {
         this.name = name;
     }
 
-    public int getImgId() {
+    public String getImgId() {
         return imgId;
     }
 
-    public void setImgId(int imgId) {
+    public void setImgId(String imgId) {
         this.imgId = imgId;
     }
 
