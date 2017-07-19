@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.webkit.WebView;
 
 import com.tongchen.ganhuojizhongying.R;
@@ -14,9 +15,10 @@ public class TextActivity extends SkinBaseActivity {
 
     private WebView webView;
 
-    public static void start(Context context,String url) {
+    public static void start(Context context, String url, String desc) {
         Intent intent = new Intent(context, TextActivity.class);
-        intent.putExtra("url",url);
+        intent.putExtra("url", url);
+        intent.putExtra("desc", desc);
         context.startActivity(intent);
     }
 
@@ -27,15 +29,25 @@ public class TextActivity extends SkinBaseActivity {
 
         Intent intent = getIntent();
         String url = intent.getStringExtra("url");
+        String desc = intent.getStringExtra("desc");
 
-        initViews(url);
+        initViews(url, desc);
     }
 
-    private void initViews(final String url) {
+    private void initViews(final String url, String desc) {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle(desc);
         setSupportActionBar(toolbar);
 
         dynamicAddView(toolbar, "background", R.color.toolbar_bg);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
 
         webView = (WebView) findViewById(R.id.web_view);
         webView.getSettings().setJavaScriptEnabled(true);

@@ -17,6 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/toolbar_bg"
+            app:navigationIcon="@drawable/ic_back"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <TextView

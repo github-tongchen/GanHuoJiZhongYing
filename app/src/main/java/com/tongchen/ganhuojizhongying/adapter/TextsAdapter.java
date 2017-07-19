@@ -78,7 +78,7 @@ public class TextsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                 public void onClick(View v) {
                     int position = itemViewHolder.getAdapterPosition();
                     Result result = mDataList.get(position);
-                    TextActivity.start(mContext, result.getUrl());
+                    TextActivity.start(mContext, result.getUrl(),result.getDesc());
                 }
             });
             return itemViewHolder;

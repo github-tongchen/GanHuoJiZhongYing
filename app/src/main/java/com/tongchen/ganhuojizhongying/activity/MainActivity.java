@@ -196,6 +196,7 @@ public class MainActivity extends SkinBaseActivity implements View.OnClickListen
                 SkinActivity.start(this);
                 break;
             case R.id.nav_menu_app:
+                Toast.makeText(MainActivity.this,"功能暂未开放",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_menu_feedback:
                 break;
